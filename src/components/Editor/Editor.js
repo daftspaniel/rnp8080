@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 
-import { loadValue } from '../../lib/Storage'
 import Minibus from '../../lib/Minibus'
 import ThemeManager from '../../lib/ThemeManager'
 import DocumentManager from '../../model/DocumentManager'
 import TextDocument from '../../model/TextDocument'
-
 
 import './Editor.css'
 
