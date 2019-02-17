@@ -1,0 +1,12 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "quotes": ["error", "single"],
+    "semi": [2, "never"]
+  },
+  "globals": {
+    "render": true,
+    "shallow": true,
+    "mount": true
+  }
+}

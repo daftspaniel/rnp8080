@@ -1,0 +1,13 @@
+.EditorContainer {
+  padding: 5px;
+  width: calc(100% - 10px);
+}
+
+.Editor {
+  text-align: left;
+  width: calc(100% - 10px);
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+  resize: none;
+  outline: none;
+}
