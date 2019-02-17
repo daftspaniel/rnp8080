@@ -1,19 +1,26 @@
 import React, { Component } from 'react'
 
 import { loadValue } from '../../lib/Storage'
-import ThemeManager from '../../lib/ThemeManager'
 import Minibus from '../../lib/Minibus'
-import { welcomeText } from '../Resources/Resources'
+import ThemeManager from '../../lib/ThemeManager'
+import DocumentManager from '../../model/DocumentManager'
+import TextDocument from '../../model/TextDocument'
+
 
 import './Editor.css'
 
+const documents = DocumentManager.getInstance()
 const theme = ThemeManager.getInstance()
 const minibus = Minibus.getInstance()
 
 class Editor extends Component {
   constructor(props) {
     super(props)
-    this.state = { value: loadValue('text1', welcomeText) }
+    let note1 = new TextDocument(1)
+    this.state = { value: note1.text }
+
+    documents.addNote(note1)
+    documents.setActiveNote(note1)
   }
 
   componentDidMount() {
@@ -36,6 +43,7 @@ class Editor extends Component {
   }
 
   handleChange = event => {
+    documents.activeNote.updateAndSave(event.target.value)
     minibus.post('text-change', () => event.target.value)
   }
 }

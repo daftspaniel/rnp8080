@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import Editor from './components/Editor/Editor'
 import StatusPanel from './components/StatusPanel/StatusPanel'
 import ThemeManager from './lib/ThemeManager'
