@@ -12,25 +12,14 @@ const minibus = Minibus.getInstance()
 class StatusPanel extends Component {
   constructor(props) {
     super(props)
-    this.panelStyle = theme.getColorStyles()
-
-    this.panelStyle.paddingLeft = 5
-    this.panelStyle.paddingRight = 5
-    this.panelStyle.paddingBottom = 0
-
-    this.panelStyle.height = 20
-    this.panelStyle.width = 'calc(100% - 40px)'
-    this.panelStyle.maxHeight = 20
-    this.panelStyle.fontSize = 'small'
-
-    this.state = { charcount: 0 }
     minibus.subscribe('text-change', this.update)
     this.textProcessor = new StringProcess()
+    this.state = {}
   }
 
   render() {
     return (
-      <div style={this.panelStyle}>
+      <div style={theme.getColorStyles()} className="StatusContainer">
         Chars: {this.state.charcount}
         &nbsp;&nbsp;&nbsp;&nbsp; Lines: {this.state.linecount}
         &nbsp;&nbsp;&nbsp;&nbsp; Words: {this.state.wordcount}
