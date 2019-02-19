@@ -11,8 +11,8 @@ class TextDocument {
     this.id = id
     this.text = ''
     this.downloadName = ''
-    this.lastModified = Date.now()
-
+    this.lastModified = Date()
+    console.log('*',this.lastModified)
     this.initText()
     this.initLastModifiedDate()
     this.initDownloadName()
@@ -59,7 +59,7 @@ class TextDocument {
     }
   }
 
-  updateModifiedDate = () => (this.lastModified = Date.now())
+  updateModifiedDate = () => (this.lastModified = Date())
 
   updateAndSave(newText) {
     this.text = newText

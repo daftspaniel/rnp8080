@@ -24,17 +24,20 @@ class StatusPanel extends Component {
         &nbsp;&nbsp;&nbsp;&nbsp; Lines: {this.state.linecount}
         &nbsp;&nbsp;&nbsp;&nbsp; Words: {this.state.wordcount}
         &nbsp;&nbsp;&nbsp;&nbsp; Sentences: {this.state.sentencecount}
+        <span> Last Modified : {this.state.lastModified}</span>
       </div>
     )
   }
 
   update = dataProvider => {
-    let text = dataProvider()
+    let note = dataProvider()
+    console.log(note)
     this.setState({
-      charcount: text.length,
-      linecount: this.textProcessor.getLineCount(text),
-      wordcount: this.textProcessor.getWordCount(text),
-      sentencecount: this.textProcessor.getSentenceCount(text),
+      charcount: note.text.length,
+      linecount: this.textProcessor.getLineCount(note.text),
+      wordcount: this.textProcessor.getWordCount(note.text),
+      sentencecount: this.textProcessor.getSentenceCount(note.text),
+      lastModified: note.lastModified.toLocaleString(),
     })
   }
 }

@@ -22,7 +22,7 @@ class Editor extends Component {
   }
 
   componentDidMount() {
-    minibus.post('text-change', () => this.state.value)
+    minibus.post('text-change', () => documents.activeNote)
   }
 
   render() {
@@ -42,7 +42,7 @@ class Editor extends Component {
 
   handleChange = event => {
     documents.activeNote.updateAndSave(event.target.value)
-    minibus.post('text-change', () => event.target.value)
+    minibus.post('text-change', () => documents.activeNote)
   }
 }
 
