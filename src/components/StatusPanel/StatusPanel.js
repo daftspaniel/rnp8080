@@ -20,25 +20,40 @@ class StatusPanel extends Component {
   render() {
     return (
       <div style={theme.getColorStyles()} className="StatusContainer">
-        Chars: {this.state.charcount}
-        &nbsp;&nbsp;&nbsp;&nbsp; Lines: {this.state.linecount}
-        &nbsp;&nbsp;&nbsp;&nbsp; Words: {this.state.wordcount}
-        &nbsp;&nbsp;&nbsp;&nbsp; Sentences: {this.state.sentencecount}
-        <span> Last Modified : {this.state.lastModified}</span>
+        <div className="infoItem">Chars: {this.state.charcount}</div>
+        <div className="infoItem">Lines: {this.state.linecount}</div>
+        <div className="infoItem">Words: {this.state.wordcount}</div>
+        <div className="infoItem">Sentences: {this.state.sentencecount}</div>
+        <div className="modified">Last Modified : {this.state.lastModified}</div>
       </div>
     )
   }
 
   update = dataProvider => {
     let note = dataProvider()
-    console.log(note)
+
     this.setState({
       charcount: note.text.length,
       linecount: this.textProcessor.getLineCount(note.text),
       wordcount: this.textProcessor.getWordCount(note.text),
       sentencecount: this.textProcessor.getSentenceCount(note.text),
-      lastModified: note.lastModified.toLocaleString(),
+      lastModified: this.formatDate(note.lastModified),
     })
+  }
+
+  formatDate(date) {
+    var m = new Date(date)
+    return (
+      ('0' + m.getDate()).slice(-2) +
+      '/' +
+      ('0' + (m.getMonth() + 1)).slice(-2) +
+      ' ' +
+      ('0' + m.getHours()).slice(-2) +
+      ':' +
+      ('0' + m.getMinutes()).slice(-2) +
+      ':' +
+      ('0' + m.getSeconds()).slice(-2)
+    )
   }
 }
 

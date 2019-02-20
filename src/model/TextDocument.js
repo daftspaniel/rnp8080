@@ -12,7 +12,7 @@ class TextDocument {
     this.text = ''
     this.downloadName = ''
     this.lastModified = Date()
-    console.log('*',this.lastModified)
+    
     this.initText()
     this.initLastModifiedDate()
     this.initDownloadName()
