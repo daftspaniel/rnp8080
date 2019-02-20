@@ -30,7 +30,7 @@ class Editor extends Component {
       <div className="EditorContainer">
         <textarea
           className="Editor"
-          onKeyUp={this.handleChange}
+          onKeyUp={this.handleKeyPress}
           onChange={this.handleChange}
           defaultValue={this.state.value}
           autoFocus={true}
@@ -38,6 +38,13 @@ class Editor extends Component {
         />
       </div>
     )
+  }
+
+  handleKeyPress = event => {
+    // ALT T
+    if (event.keyCode === 84 && event.altKey === true) {
+      theme.switchTheme()
+    }
   }
 
   handleChange = event => {

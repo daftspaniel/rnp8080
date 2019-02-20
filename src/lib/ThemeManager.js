@@ -1,5 +1,20 @@
+import Minibus from './Minibus'
+
+const minibus = Minibus.getInstance()
+
 export default class ThemeManager {
   static theInstance = null
+
+  defaultTheme = {
+    foreground: '#111111',
+    backgroundPrimary: '#bbd8f9',
+    backgroundSecondary: '#9ac0e9',
+    backgroundTertiary: '#c0deff',
+    padding: 5,
+    borderColor: '#94b1ff !important',
+    documentColor: '#111111',
+    documentBackground: 'whitesmoke',
+  }
 
   darkTheme = {
     foreground: '#eee862',
@@ -12,7 +27,22 @@ export default class ThemeManager {
     documentBackground: '#000000',
   }
 
-  active = this.darkTheme
+  amberTheme = {
+    foreground: '#ff7418',
+    backgroundPrimary: '#050107',
+    backgroundSecondary: '#63281b',
+    backgroundTertiary: '#050107',
+    padding: 5,
+    borderColor: '#c47429 !important',
+    documentColor: '#ff671f',
+    documentBackground: '#060201',
+  }
+
+  allThemes = [this.defaultTheme, this.darkTheme, this.amberTheme]
+
+  activeIndex = 0
+
+  active = this.allThemes[this.activeIndex]
 
   /**
    * @returns {ThemeManager}
@@ -27,6 +57,13 @@ export default class ThemeManager {
 
   getTheme = () => this.active()
 
+  switchTheme = () => {
+    this.activeIndex++
+    if (this.activeIndex > this.allThemes.length - 1) this.activeIndex = 0
+    this.active = this.allThemes[this.activeIndex]
+    minibus.post('theme-change')
+  }
+
   getStyles = () => {
     return {
       backgroundColor: this.active.backgroundPrimary,
@@ -34,11 +71,11 @@ export default class ThemeManager {
       padding: this.active.padding,
     }
   }
-  
+
   getColorStyles = () => {
     return {
       backgroundColor: this.active.backgroundPrimary,
-      color: this.active.foreground
+      color: this.active.foreground,
     }
   }
 
