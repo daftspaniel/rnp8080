@@ -79,6 +79,13 @@ export default class ThemeManager {
     }
   }
 
+  get2ndColorStyles = () => {
+    return {
+      backgroundColor: this.active.backgroundSecondary,
+      color: this.active.foreground,
+    }
+  }
+
   getDocumentStyles = () => {
     return {
       backgroundColor: this.active.documentBackground,

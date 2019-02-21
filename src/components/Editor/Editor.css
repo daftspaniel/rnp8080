@@ -1,5 +1,7 @@
 .EditorContainer {
   padding: 5px;
+  margin-top: 0;
+  padding-top: 0;
   width: calc(100% - 10px);
 }
 

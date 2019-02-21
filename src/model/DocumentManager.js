@@ -1,3 +1,5 @@
+import { storeValue } from '../lib/Storage'
+
 class DocumentManager {
   static theInstance = null
 
@@ -29,7 +31,7 @@ class DocumentManager {
   makeNoteActive(id) {
     this.activeNoteId = id - 1
     this.activeNote = this.allNotes[this.activeNoteId]
-    this.storeValue('ActiveDocument', id.toString())
+    storeValue('ActiveDocument', id.toString())
   }
 
   moveToNextTab() {

@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import Minibus from '../../lib/Minibus'
 import ThemeManager from '../../lib/ThemeManager'
 import DocumentManager from '../../model/DocumentManager'
-import TextDocument from '../../model/TextDocument'
 
 import './Editor.css'
 
@@ -12,14 +11,7 @@ const theme = ThemeManager.getInstance()
 const minibus = Minibus.getInstance()
 
 class Editor extends Component {
-  constructor(props) {
-    super(props)
-    let note1 = new TextDocument(1)
-    this.state = { value: note1.text }
-
-    documents.addNote(note1)
-    documents.setActiveNote(note1)
-  }
+  state = { value: documents.activeNote.text }
 
   componentDidMount() {
     minibus.post('text-change', () => documents.activeNote)
