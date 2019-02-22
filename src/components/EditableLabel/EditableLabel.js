@@ -16,17 +16,17 @@ class EditableLabel extends Component {
     this.state = { editMode: false, text: props.text }
   }
 
-  toggleMode = () => {
-    this.setState({ editMode: !this.state.editMode })
-  }
+  toggleMode = () => this.setState({ editMode: !this.state.editMode })
 
   exitEditMode = () => {
     documents.activeNote.setDownloadName(this.state.text)
     this.toggleMode()
   }
 
-  onChangeHandler = event => {
-    this.setState({ text: event.target.value })
+  onChangeHandler = event => this.setState({ text: event.target.value })
+
+  handleKeyPress = event => {
+    if (event.key === 'Enter') this.exitEditMode()
   }
 
   render() {
@@ -43,6 +43,7 @@ class EditableLabel extends Component {
             defaultValue={this.state.text}
             onBlur={this.exitEditMode}
             onChange={this.onChangeHandler}
+            onKeyPress={this.handleKeyPress}
           />
         ) : (
           this.state.text

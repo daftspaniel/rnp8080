@@ -25,14 +25,14 @@ class App extends Component {
     console.log(documents.activeNote)
   }
 
-  update = () => {
-    this.setState({ index: this.state.index + 1 })
-  }
+  update = () => this.setState({ index: this.state.index + 1 })
 
   render() {
     return (
       <div className="App" style={theme.getColorStyles()}>
-        <div><EditableLabel text={documents.activeNote.downloadName}/></div>
+        <div>
+          <EditableLabel text={documents.activeNote.downloadName} />
+        </div>
         <Editor />
         <StatusPanel />
       </div>
