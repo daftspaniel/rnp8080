@@ -13,10 +13,14 @@ const theme = ThemeManager.getInstance()
 class EditableLabel extends Component {
   constructor(props) {
     super(props)
-    this.state = { editMode: false, text: props.text }
+    this.state = { editMode: false, text: props.note.downloadName }
   }
 
   toggleMode = () => this.setState({ editMode: !this.state.editMode })
+
+  selectNote = () => {
+    documents.makeNoteActive(this.props.note.id)
+  }
 
   exitEditMode = () => {
     documents.activeNote.setDownloadName(this.state.text)
@@ -34,7 +38,8 @@ class EditableLabel extends Component {
       <div
         className="EditableLabelContainer"
         style={theme.get2ndColorStyles()}
-        onClick={() => this.toggleMode()}
+        onDoubleClick={() => this.toggleMode()}
+        onClick={() => this.selectNote()}
       >
         {this.state.editMode ? (
           <input

@@ -1,0 +1,4 @@
+.TabBarContainer {
+  display: flex;
+  flex-direction: row;
+}

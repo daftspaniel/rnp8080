@@ -1,7 +1,7 @@
 import { loadValue, storeValue } from '../lib/Storage'
 
 import { welcomeText } from '../components/Resources/Resources'
-//const defaultDownloadName = 'np8080.txt'
+
 const defaultFilename = 'np8080'
 const defaultFileExtension = 'txt'
 
