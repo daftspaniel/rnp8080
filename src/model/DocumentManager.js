@@ -23,7 +23,7 @@ class DocumentManager {
   }
 
   activate() {
-    this.activeNoteId = parseInt(loadValue('ActiveDocument', '0'))
+    this.activeNoteId = parseInt(loadValue('ActiveDocument', '1'))
     this.makeNoteActive(this.activeNoteId)
   }
 

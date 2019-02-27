@@ -17,6 +17,7 @@ class Editor extends Component {
     if(documents.activeNote)
     this.setState({ value: documents.activeNote.text })    
     minibus.subscribe('active-note-change', this.activeNoteChangeHandler)
+    minibus.post('text-change', () => documents.activeNote)
   }
 
   render() {
