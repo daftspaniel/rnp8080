@@ -40,6 +40,14 @@ class Editor extends Component {
     if (event.keyCode === 84 && event.altKey === true) {
       theme.switchTheme()
     }
+    // ALT ,
+    else if (event.keyCode === 188 && event.altKey === true) {
+      documents.moveToPreviousTab()
+    }
+    else // ALT .
+    if (event.keyCode === 190 && event.altKey === true) {
+      documents.moveToNextTab()
+    }
   }
 
   activeNoteChangeHandler = () => {
