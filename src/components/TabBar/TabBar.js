@@ -21,8 +21,17 @@ class TabBar extends Component {
           />
         ))}
         <div className="TabBarNav">
-          <button style={theme.getColorStyles()} onClick={this.previous}>&lt;</button>
-          <button style={theme.getColorStyles()} onClick={this.next}>&gt;</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <button style={theme.getColorStyles()} onClick={this.previous}>
+            &lt;
+          </button>
+          <button style={theme.getColorStyles()} onClick={this.next}>
+            &gt;
+          </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <button style={theme.getColorStyles()} onClick={this.download}>
+            Download
+          </button>
         </div>
       </div>
     )
@@ -34,6 +43,16 @@ class TabBar extends Component {
 
   next() {
     documents.moveToNextTab()
+  }
+
+  download() {
+    let element = document.createElement('a')
+    element.setAttribute(
+      'href',
+      'data:text/text;charset=utf-8,' + encodeURI(documents.activeNote.text)
+    )
+    element.setAttribute('download', documents.activeNote.downloadName)
+    element.click()
   }
 }
 

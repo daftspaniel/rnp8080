@@ -39,6 +39,7 @@ class DocumentManager {
     this.activeNote = this.allNotes[this.activeNoteId]
     storeValue('ActiveDocument', id.toString())
     minibus.post('active-note-change', () => this.activeNoteId)
+    document.title = this.activeNote.downloadName
   }
 
   moveToNextTab() {
