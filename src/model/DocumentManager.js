@@ -1,4 +1,7 @@
-import { storeValue } from '../lib/Storage'
+import { storeValue, loadValue } from '../lib/Storage'
+import Minibus from '../lib/Minibus'
+
+const minibus = Minibus.getInstance()
 
 class DocumentManager {
   static theInstance = null
@@ -17,21 +20,25 @@ class DocumentManager {
   constructor() {
     this.allNotes = []
     this.activeNote = undefined
-    this.activeNoteId = 0
   }
 
-  setActiveNote(newActiveNote) {
-    this.activeNote = newActiveNote
+  activate() {
+    this.activeNoteId = parseInt(loadValue('ActiveDocument', '0'))
+    this.makeNoteActive(this.activeNoteId)
   }
+
+  setActiveNote = newActiveNote => (this.activeNote = newActiveNote)
 
   getNote = index => this.allNotes[index]
 
   addNote = note => this.allNotes.push(note)
 
   makeNoteActive(id) {
+    console.log('Set active', id)
     this.activeNoteId = id - 1
     this.activeNote = this.allNotes[this.activeNoteId]
     storeValue('ActiveDocument', id.toString())
+    minibus.post('active-note-change', () => this.activeNoteId)
   }
 
   moveToNextTab() {

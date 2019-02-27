@@ -31,7 +31,7 @@ class StatusPanel extends Component {
 
   update = dataProvider => {
     let note = dataProvider()
-
+    if (!note) return
     this.setState({
       charcount: note.text.length,
       linecount: this.textProcessor.getLineCount(note.text),

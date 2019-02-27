@@ -11,10 +11,12 @@ const theme = ThemeManager.getInstance()
 const minibus = Minibus.getInstance()
 
 class Editor extends Component {
-  state = { value: documents.activeNote.text }
+  state = { value: '' }
 
   componentDidMount() {
-    minibus.post('text-change', () => documents.activeNote)
+    if(documents.activeNote)
+    this.setState({ value: documents.activeNote.text })    
+    minibus.subscribe('active-note-change', this.activeNoteChangeHandler)
   }
 
   render() {
@@ -24,7 +26,7 @@ class Editor extends Component {
           className="Editor"
           onKeyUp={this.handleKeyPress}
           onChange={this.handleChange}
-          defaultValue={this.state.value}
+          value={this.state.value}
           autoFocus={true}
           style={theme.getDocumentStyles()}
         />
@@ -39,7 +41,13 @@ class Editor extends Component {
     }
   }
 
+  activeNoteChangeHandler = () => {
+    this.setState({ value: documents.activeNote.text })
+    minibus.post('text-change', () => documents.activeNote)
+  }
+
   handleChange = event => {
+    this.setState({ value: event.target.value })
     documents.activeNote.updateAndSave(event.target.value)
     minibus.post('text-change', () => documents.activeNote)
   }

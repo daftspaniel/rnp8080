@@ -5,22 +5,34 @@ import ThemeManager from '../../lib/ThemeManager'
 import DocumentManager from '../../model/DocumentManager'
 
 import './EditableLabel.css'
+import Minibus from '../../lib/Minibus'
 
 const documents = DocumentManager.getInstance()
 const theme = ThemeManager.getInstance()
-//const minibus = Minibus.getInstance()
+const minibus = Minibus.getInstance()
 
 class EditableLabel extends Component {
   constructor(props) {
     super(props)
-    this.state = { editMode: false, text: props.note.downloadName }
+    this.state = {
+      active: false,
+      editMode: false,
+      text: props.note.downloadName,
+    }
+    minibus.subscribe('active-note-change', this.activeNoteChangeHandler)
   }
+
+  componentDidMount = () => this.activeNoteChangeHandler()
 
   toggleMode = () => this.setState({ editMode: !this.state.editMode })
 
   selectNote = () => {
     documents.makeNoteActive(this.props.note.id)
+    this.setState({ active: true })
   }
+  
+  activeNoteChangeHandler = () =>
+    this.setState({ active: this.props.note.id === 1 + documents.activeNoteId })
 
   exitEditMode = () => {
     documents.activeNote.setDownloadName(this.state.text)
@@ -33,11 +45,17 @@ class EditableLabel extends Component {
     if (event.key === 'Enter') this.exitEditMode()
   }
 
+  getLabelStyle = () => {
+    let labelStyle = theme.get2ndColorStyles()
+    labelStyle.opacity = this.state.active ? '1' : '0.6'
+    return labelStyle
+  }
+
   render() {
     return (
       <div
         className="EditableLabelContainer"
-        style={theme.get2ndColorStyles()}
+        style={this.getLabelStyle()}
         onDoubleClick={() => this.toggleMode()}
         onClick={() => this.selectNote()}
       >
