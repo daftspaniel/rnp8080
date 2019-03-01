@@ -38,7 +38,7 @@ class TabBar extends Component {
   }
 
   previous() {
-    documents.moveToNextTab()
+    documents.moveToPreviousTab()
   }
 
   next() {
