@@ -6,6 +6,7 @@ import StatusPanel from './components/StatusPanel/StatusPanel'
 import ThemeManager from './lib/ThemeManager'
 import AppManager from './model/AppManager'
 import Minibus from './lib/Minibus'
+import { loadValue } from './lib/Storage'
 
 import './App.css'
 
@@ -17,7 +18,7 @@ class App extends Component {
     super(props)
     this.state = { index: 1 }
     this.appManager = new AppManager()
-
+    theme.setTheme(loadValue('theme', 0))
     minibus.subscribe('theme-change', this.update)
   }
 

@@ -1,4 +1,5 @@
 import Minibus from './Minibus'
+import { storeValue } from '../lib/Storage'
 
 const minibus = Minibus.getInstance()
 
@@ -60,8 +61,7 @@ export default class ThemeManager {
   switchTheme = () => {
     this.activeIndex++
     if (this.activeIndex > this.allThemes.length - 1) this.activeIndex = 0
-    this.active = this.allThemes[this.activeIndex]
-    minibus.post('theme-change')
+    this.setTheme(this.activeIndex)
   }
 
   getStyles = () => {
@@ -92,5 +92,11 @@ export default class ThemeManager {
       color: this.active.documentColor,
       padding: this.active.padding,
     }
+  }
+
+  setTheme(themeIndex) {
+    this.active = this.allThemes[themeIndex]
+    storeValue('theme', themeIndex)
+    minibus.post('theme-change')
   }
 }

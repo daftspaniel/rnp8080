@@ -6,7 +6,6 @@ const documents = DocumentManager.getInstance()
 
 class AppManager {
   constructor() {
-    console.log('AppManager')
     this.init()
     this.notes = []
   }

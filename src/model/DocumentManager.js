@@ -34,12 +34,21 @@ class DocumentManager {
   addNote = note => this.allNotes.push(note)
 
   makeNoteActive(id) {
-    console.log('Set active', id)
     this.activeNoteId = id - 1
     this.activeNote = this.allNotes[this.activeNoteId]
     storeValue('ActiveDocument', id.toString())
     minibus.post('active-note-change', () => this.activeNoteId)
+    this.updateGui()
+  }
+
+  updateGui() {
     document.title = this.activeNote.downloadName
+    this.focusEditor()
+  }
+
+  focusEditor() {
+    let element = document.querySelectorAll('textarea')[0]
+    if (element) element.focus()
   }
 
   moveToNextTab() {
