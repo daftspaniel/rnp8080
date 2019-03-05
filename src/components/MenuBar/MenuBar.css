@@ -1,0 +1,13 @@
+.MenuBarContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  border-bottom: solid 1px #606993;
+  height: 30px;
+}
+
+button {
+  border-radius: 5px;
+  margin-right: 5px;
+  font-weight: bolder;
+  margin: 2px;
+}

@@ -8,7 +8,7 @@
 .Editor {
   text-align: left;
   width: calc(100% - 10px);
-  height: calc(100vh - 70px);
+  height: calc(100vh - 110px);
   overflow-y: auto;
   resize: none;
   outline: none;

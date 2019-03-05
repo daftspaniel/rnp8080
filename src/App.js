@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Editor from './components/Editor/Editor'
 import TabBar from './components/TabBar/TabBar'
+import MenuBar from './components/MenuBar/MenuBar'
 import StatusPanel from './components/StatusPanel/StatusPanel'
 import ThemeManager from './lib/ThemeManager'
 import AppManager from './model/AppManager'
@@ -27,6 +28,7 @@ class App extends Component {
   render() {
     return (
       <div className="App" style={theme.getColorStyles()}>
+      <MenuBar/>
         <TabBar />
         <Editor />
         <StatusPanel />
