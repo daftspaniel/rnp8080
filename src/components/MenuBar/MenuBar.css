@@ -1,8 +1,10 @@
 .MenuBarContainer {
-  display: flex;
-  flex-direction: row-reverse;
   border-bottom: solid 1px #606993;
   height: 30px;
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  padding-top: 7px;
 }
 
 button {
@@ -10,4 +12,5 @@ button {
   margin-right: 5px;
   font-weight: bolder;
   margin: 2px;
+  display: inline-block;
 }

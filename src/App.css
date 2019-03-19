@@ -5,3 +5,12 @@
   flex-direction: column;
   overflow: hidden;
 }
+  
+html, body {
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  font-size: 12pt;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin: 0;
+  background-color: #4d50d9;
+}

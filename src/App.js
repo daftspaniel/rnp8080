@@ -28,7 +28,7 @@ class App extends Component {
   render() {
     return (
       <div className="App" style={theme.getColorStyles()}>
-      <MenuBar/>
+        <MenuBar />
         <TabBar />
         <Editor />
         <StatusPanel />

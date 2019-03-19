@@ -76,6 +76,9 @@ export default class ThemeManager {
     return {
       backgroundColor: this.active.backgroundPrimary,
       color: this.active.foreground,
+      ':hover': {
+        background: 'white',
+      },
     }
   }
 
