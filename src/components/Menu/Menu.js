@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import ThemeManager from '../../lib/ThemeManager'
 
 import './Menu.css'
+import { MenuItem } from './MenuItem'
 
 const theme = ThemeManager.getInstance()
 
@@ -30,37 +31,11 @@ class Menu extends Component {
       </div>
     )
   }
-  
-  mouseEnter = () => {
-    console.log('ME')
-    this.setState({ hover: true })
-  }
-
-  mouseExit = () => {
-    console.log('MEx')
-    this.setState({ hover: false })
-  }
-
-  getItemStyle = () => {
-    return { backgroundColor: this.state.hover ? 'white' : null }
-  }
 
   renderMenuItem(item, index) {
     return (
-      <div
-        key={index}
-      >
-        <div
-          className="menuItem"
-          onClick={e => this.close(e)}
-          // style={this.getMenuStyles()}
-          onMouseEnter={(e) => this.mouseEnter(e)}
-          onMouseLeave={(e) => this.mouseExit(e)}
-          style={this.getItemStyle()}
-          title={item.info}
-        >
-          {item.name}
-        </div>
+      <div key={index}>
+        <MenuItem item={item} close={this.close} />
         {this.getSeparator(item)}
       </div>
     )
@@ -78,7 +53,7 @@ class Menu extends Component {
       </div>
     ) : null
   }
-  //{item.separator ? <hr/> : null}
+  
   open = e => {
     console.log('Open')
     this.setState({ open: true })

@@ -40,3 +40,31 @@ export const StartMenuItems = [
     separator: false,
   },
 ]
+
+export const ModifyMenuItems = [
+  {
+    name: 'Replace...',
+    info: 'Replace text with different text.\nShortcut - Ctrl + Q',
+    separator: false,
+  },
+  {
+    name: 'Pre/Post...',
+    info: 'Add text to start and/or end of lines.',
+    separator: true,
+  },
+  {
+    name: 'Number',
+    info: 'Number non-blank lines.',
+    separator: false,
+  },
+  {
+    name: 'Tabs to Spaces',
+    info: 'Convert tab characters to spaces.',
+    separator: false,
+  },
+  {
+    name: 'Doublespace',
+    info: 'Double space the lines.',
+    separator: false,
+  },
+]

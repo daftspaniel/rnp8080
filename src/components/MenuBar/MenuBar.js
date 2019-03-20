@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import ThemeManager from '../../lib/ThemeManager'
 import DocumentManager from '../../model/DocumentManager'
 import Menu from '../Menu/Menu'
-import {StartMenuItems} from './MenuDefinitions'
+import { StartMenuItems, ModifyMenuItems } from './MenuDefinitions'
 
 import './MenuBar.css'
 
@@ -15,7 +15,7 @@ class MenuBar extends Component {
     return (
       <div className="MenuBarContainer">
         <Menu name="Start" items={StartMenuItems} />
-        <Menu name="Modify" />
+        <Menu name="Modify" items={ModifyMenuItems} />
         <Menu name="Add" />
         <Menu name="Remove" />
         <Menu name="Advanced" />
