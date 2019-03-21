@@ -14,9 +14,10 @@ class Editor extends Component {
   state = { value: '' }
 
   componentDidMount() {
-    if(documents.activeNote)
-    this.setState({ value: documents.activeNote.text })    
+    if (documents.activeNote)
+      this.setState({ value: documents.activeNote.text })
     minibus.subscribe('active-note-change', this.activeNoteChangeHandler)
+    minibus.subscribe('clear-text', this.activeNoteClear)
     minibus.post('text-change', () => documents.activeNote)
   }
 
@@ -45,9 +46,9 @@ class Editor extends Component {
       documents.moveToPreviousTab()
     }
     else // ALT .
-    if (event.keyCode === 190 && event.altKey === true) {
-      documents.moveToNextTab()
-    }
+      if (event.keyCode === 190 && event.altKey === true) {
+        documents.moveToNextTab()
+      }
   }
 
   activeNoteChangeHandler = () => {
@@ -55,10 +56,13 @@ class Editor extends Component {
     minibus.post('text-change', () => documents.activeNote)
   }
 
-  handleChange = event => {
-    this.setState({ value: event.target.value })
-    documents.activeNote.updateAndSave(event.target.value)
-    minibus.post('text-change', () => documents.activeNote)
+  activeNoteClear = event => this.update('')
+
+  handleChange = event => this.update(event.target.value)
+
+  update(text) {
+    documents.activeNote.setText(text)
+    this.activeNoteChangeHandler()
   }
 }
 

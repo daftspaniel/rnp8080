@@ -3,6 +3,7 @@ export const StartMenuItems = [
     name: 'Clear text',
     info: 'Start again with an empty file.',
     separator: true,
+    command: 'clear-text',
   },
   {
     name: 'Welcome text',
