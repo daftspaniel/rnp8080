@@ -9,36 +9,43 @@ export const StartMenuItems = [
     name: 'Welcome text',
     info: 'Put sample text into the file.',
     separator: false,
+    command: 'welcome-text',
   },
   {
     name: 'Markdown',
     info: 'Put sample Markdown into the file.',
     separator: false,
+    command: 'markdown-text'
   },
   {
     name: 'Todo Template',
     info: 'Put a Todo list template into the file.',
     separator: false,
+    command: 'todo-template-text'
   },
   {
     name: 'PMI Template',
     info: 'Put a PMI list template into the file.',
     separator: false,
+    command: 'pmi-template-text'
   },
   {
     name: 'SMART Goal',
     info: 'Put a SMART Goal template into the file.',
     separator: true,
+    command: 'smart-template-text'
   },
   {
     name: 'Week Planner',
     info: 'Put a week long planning template into the file.',
     separator: false,
+    command: 'week-template-text'
   },
   {
     name: 'HTML Starter',
     info: 'Put an HTML template into the file.',
     separator: false,
+    command: 'html-template-text'
   },
 ]
 

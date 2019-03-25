@@ -4,6 +4,9 @@ import Minibus from '../../lib/Minibus'
 import ThemeManager from '../../lib/ThemeManager'
 import DocumentManager from '../../model/DocumentManager'
 
+import { welcomeText, markdownSampler } from '../Resources/Resources'
+import { TodoTemplate, PMITemplate, SMARTTemplate, WeekPlanner, WebStarterHtml } from '../Resources/Template'
+
 import './Editor.css'
 
 const documents = DocumentManager.getInstance()
@@ -14,11 +17,24 @@ class Editor extends Component {
   state = { value: '' }
 
   componentDidMount() {
+    minibus.subscribe('active-note-change', this.activeNoteChangeHandler)
+    this.setupMenuCommands()
+
     if (documents.activeNote)
       this.setState({ value: documents.activeNote.text })
-    minibus.subscribe('active-note-change', this.activeNoteChangeHandler)
-    minibus.subscribe('clear-text', this.activeNoteClear)
+
     minibus.post('text-change', () => documents.activeNote)
+  }
+
+  setupMenuCommands() {
+    minibus.subscribe('clear-text', () => this.setNote(''))
+    minibus.subscribe('welcome-text', () => this.setNote(welcomeText))
+    minibus.subscribe('markdown-text', () => this.setNote(markdownSampler))
+    minibus.subscribe('todo-template-text', () => this.setNote(TodoTemplate))
+    minibus.subscribe('pmi-template-text', () => this.setNote(PMITemplate))
+    minibus.subscribe('smart-template-text', () => this.setNote(SMARTTemplate))
+    minibus.subscribe('week-template-text', () => this.setNote(WeekPlanner))
+    minibus.subscribe('html-template-text', () => this.setNote(WebStarterHtml))
   }
 
   render() {
@@ -56,7 +72,9 @@ class Editor extends Component {
     minibus.post('text-change', () => documents.activeNote)
   }
 
-  activeNoteClear = event => this.update('')
+  //activeNoteClear = event => this.update('')
+
+  setNote = text => this.update(text)
 
   handleChange = event => this.update(event.target.value)
 
