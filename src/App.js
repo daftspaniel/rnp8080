@@ -4,6 +4,8 @@ import Editor from './components/Editor/Editor'
 import TabBar from './components/TabBar/TabBar'
 import MenuBar from './components/MenuBar/MenuBar'
 import StatusPanel from './components/StatusPanel/StatusPanel'
+import AboutDialog from './components/Dialog/About'
+
 import ThemeManager from './lib/ThemeManager'
 import AppManager from './model/AppManager'
 import Minibus from './lib/Minibus'
@@ -28,6 +30,7 @@ class App extends Component {
   render() {
     return (
       <div className="App" style={theme.getColorStyles()}>
+        <AboutDialog />
         <MenuBar />
         <TabBar />
         <Editor />
