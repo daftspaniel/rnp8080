@@ -2,24 +2,37 @@ import React, { Component } from 'react'
 
 import ThemeManager from '../../lib/ThemeManager'
 import Minibus from '../../lib/Minibus'
-import './About.css'
-const theme = ThemeManager.getInstance()
-const minibus = Minibus.getInstance()
+import { welcomeText } from '../Resources/Resources'
 
-class AboutDialog extends Component {
+import './Dialog.css'
+import './About.css'
+
+class Dialog extends Component {
     constructor(props) {
         super(props)
-        minibus.subscribe('show-about-dialog', () => this.setState({ visible: true }))
-        this.state = { visible: true }
+        this.state = { visible: false }
+        this.theme = ThemeManager.getInstance()
+        this.minibus = Minibus.getInstance()
+    }
+    close = (e) => this.setState({ visible: false })
+    show = (e) => this.setState({ visible: true })
+}
+
+class AboutDialog extends Dialog {
+    constructor(props) {
+        super(props)
+        this.minibus.subscribe('show-about-dialog', () => this.show())
     }
 
     render() {
         if (!this.state.visible) return null
         return (
-            <div style={theme.getColorStyles()} className="dialogPanel">
-                <textarea readonly cols="85" className="textBox">Cheese</textarea>
+            <div className="dialogPanel AboutDialog" style={this.theme.getColorStyles()}>
+                <div onClick={this.close} className="closeCross">X</div>
+                <div className="header" style={this.theme.get2ndColorStyles()}>About Notepad 8080 v</div >
+                <textarea readOnly cols="85" className="textBox" defaultValue={welcomeText}></textarea>
                 <br />
-                <button onClick={(e) => this.setState({ visible: false })}>Close</button>
+                <button onClick={this.close}>Close</button>
             </div >
         )
     }

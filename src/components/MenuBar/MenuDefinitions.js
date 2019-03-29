@@ -76,3 +76,18 @@ export const ModifyMenuItems = [
     separator: false,
   },
 ]
+
+export const AboutMenuItems = [
+  {
+    name: 'About...',
+    info: 'Find out more about NP8080.',
+    separator: false,
+    command: 'show-about-dialog'
+  },
+  {
+    name: 'Manual...',
+    info: 'Read the NP8080 manual.',
+    separator: true,
+    command: 'show-manual-dialog'
+  }
+]

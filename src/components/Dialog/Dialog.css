@@ -1,0 +1,36 @@
+.closeCross {
+    float: right;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 3px;
+    margin-top: 2px;
+    margin-right: 2px;
+    background-color: #7a1114;
+    color: rgb(190, 183, 172);
+    text-align: center;
+    width: 28px;
+    border-radius: 3px;
+}
+
+.header {
+    text-align: center;
+    width: calc(100% + 4px);
+    font-size: large;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 2px;
+    margin-left: -2px;
+    margin-top: -2px;
+}
+
+.dialogPanel {
+    font-size: smaller;
+    width: 700px;
+    margin: 50px auto;
+    border: 1px solid whitesmoke;
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    left: calc(50vw - 350px);
+    z-index: 1001;
+  }

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import ThemeManager from '../../lib/ThemeManager'
 import DocumentManager from '../../model/DocumentManager'
 import Menu from '../Menu/Menu'
-import { StartMenuItems, ModifyMenuItems } from './MenuDefinitions'
+import { StartMenuItems, ModifyMenuItems, AboutMenuItems } from './MenuDefinitions'
 
 import './MenuBar.css'
 
@@ -20,7 +20,7 @@ class MenuBar extends Component {
         <Menu name="Remove" />
         <Menu name="Advanced" />
         <Menu name="View" />
-        <Menu name="Help" />
+        <Menu name="Help" items={AboutMenuItems} />
         <button style={theme.getColorStyles()} onClick={this.download}>
           Download
         </button>
