@@ -1,22 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { welcomeText } from '../../Resources/Resources'
 
-import ThemeManager from '../../lib/ThemeManager'
-import Minibus from '../../lib/Minibus'
-import { welcomeText } from '../Resources/Resources'
-
-import './Dialog.css'
+import '../Dialog.css'
 import './About.css'
 
-class Dialog extends Component {
-    constructor(props) {
-        super(props)
-        this.state = { visible: false }
-        this.theme = ThemeManager.getInstance()
-        this.minibus = Minibus.getInstance()
-    }
-    close = (e) => this.setState({ visible: false })
-    show = (e) => this.setState({ visible: true })
-}
+import { Dialog } from '../Dialog';
 
 class AboutDialog extends Dialog {
     constructor(props) {
@@ -28,7 +16,7 @@ class AboutDialog extends Dialog {
         if (!this.state.visible) return null
         return (
             <div className="dialogPanel AboutDialog" style={this.theme.getColorStyles()}>
-                <div onClick={this.close} className="closeCross">X</div>
+                {this.renderCloseCross()}
                 <div className="header" style={this.theme.get2ndColorStyles()}>About Notepad 8080 v</div >
                 <textarea readOnly cols="85" className="textBox" defaultValue={welcomeText}></textarea>
                 <br />
