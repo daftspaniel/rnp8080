@@ -2,6 +2,10 @@ import StringProcess from './StringProcess'
 
 let tp = new StringProcess()
 
+it('set default line eding', () => {
+  expect(tp.lineend).toEqual('\n')
+})
+
 it('trims whitespace on text', () => {
   expect(tp.trim(' Hello ')).toEqual('Hello')
 })

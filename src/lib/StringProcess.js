@@ -1,10 +1,7 @@
 const DefaultLineEnding = '\n'
 
 class StringProcess {
-  constructor(lineEnding) {
-    if (!lineEnding) {
-      lineEnding = DefaultLineEnding
-    }
+  constructor(lineEnding  = DefaultLineEnding) {
     this.lineend = lineEnding
   }
 
