@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-//import Minibus from '../../lib/Minibus'
+import { Active_Note_Change } from '../../Events'
+import Minibus from '../../lib/Minibus'
 import ThemeManager from '../../lib/ThemeManager'
 import DocumentManager from '../../model/DocumentManager'
 
 import './EditableLabel.css'
-import Minibus from '../../lib/Minibus'
 
 const documents = DocumentManager.getInstance()
 const theme = ThemeManager.getInstance()
@@ -19,7 +19,7 @@ class EditableLabel extends Component {
       editMode: false,
       text: props.note.downloadName,
     }
-    minibus.subscribe('active-note-change', this.activeNoteChangeHandler)
+    minibus.subscribe(Active_Note_Change, this.activeNoteChangeHandler)
   }
 
   componentDidMount = () => this.activeNoteChangeHandler()

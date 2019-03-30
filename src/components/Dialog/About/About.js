@@ -1,4 +1,6 @@
 import React from 'react'
+
+import { Show_About_Dialog } from '../../../Events'
 import { welcomeText } from '../../Resources/Resources'
 
 import '../Dialog.css'
@@ -9,7 +11,7 @@ import { Dialog } from '../Dialog';
 class AboutDialog extends Dialog {
     constructor(props) {
         super(props)
-        this.minibus.subscribe('show-about-dialog', () => this.show())
+        this.minibus.subscribe(Show_About_Dialog, () => this.show())
     }
 
     render() {

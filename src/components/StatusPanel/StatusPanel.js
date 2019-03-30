@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { Text_Change } from '../../Events'
+
 import ThemeManager from '../../lib/ThemeManager'
 import Minibus from '../../lib/Minibus'
 import StringProcess from '../../lib/StringProcess'
@@ -12,7 +14,7 @@ const minibus = Minibus.getInstance()
 class StatusPanel extends Component {
   constructor(props) {
     super(props)
-    minibus.subscribe('text-change', this.update)
+    minibus.subscribe(Text_Change, this.update)
     this.textProcessor = new StringProcess()
     this.state = {}
   }

@@ -12,6 +12,7 @@ import Minibus from './lib/Minibus'
 import { loadValue } from './lib/Storage'
 
 import './App.css'
+import { Theme_Change } from './Events'
 
 const theme = ThemeManager.getInstance()
 const minibus = Minibus.getInstance()
@@ -22,7 +23,7 @@ class App extends Component {
     this.state = { index: 1 }
     this.appManager = new AppManager()
     theme.setTheme(loadValue('theme', 0))
-    minibus.subscribe('theme-change', this.update)
+    minibus.subscribe(Theme_Change, this.update)
   }
 
   update = () => this.setState({ index: this.state.index + 1 })
