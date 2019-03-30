@@ -7,7 +7,9 @@ import Editor from './components/Editor/Editor'
 import TabBar from './components/TabBar/TabBar'
 import MenuBar from './components/MenuBar/MenuBar'
 import StatusPanel from './components/StatusPanel/StatusPanel'
+
 import AboutDialog from './components/Dialog/About/About'
+import ManualDialog from './components/Dialog/Manual/Manual'
 
 import AppManager from './model/AppManager'
 import { loadValue } from './lib/Storage'
@@ -30,6 +32,7 @@ class App extends BaseComponent {
     return (
       <div className="App" style={this.theme.getColorStyles()}>
         <AboutDialog />
+        <ManualDialog />
         <MenuBar />
         <TabBar />
         <Editor />
