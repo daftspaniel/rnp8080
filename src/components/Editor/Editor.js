@@ -4,6 +4,7 @@ import Minibus from '../../lib/Minibus'
 import ThemeManager from '../../lib/ThemeManager'
 import DocumentManager from '../../model/DocumentManager'
 
+import { Clear_Text, Welcome_Text, Markdown_Text, Todo_Template_Text, PMI_Template_Text, Smart_Template_Text, Week_Template_Text, HTML_Template_Text } from '../../Events'
 import { welcomeText, markdownSampler } from '../Resources/Resources'
 import { TodoTemplate, PMITemplate, SMARTTemplate, WeekPlanner, WebStarterHtml } from '../Resources/Template'
 
@@ -27,14 +28,14 @@ class Editor extends Component {
   }
 
   setupMenuCommands() {
-    minibus.subscribe('clear-text', () => this.setNote(''))
-    minibus.subscribe('welcome-text', () => this.setNote(welcomeText))
-    minibus.subscribe('markdown-text', () => this.setNote(markdownSampler))
-    minibus.subscribe('todo-template-text', () => this.setNote(TodoTemplate))
-    minibus.subscribe('pmi-template-text', () => this.setNote(PMITemplate))
-    minibus.subscribe('smart-template-text', () => this.setNote(SMARTTemplate))
-    minibus.subscribe('week-template-text', () => this.setNote(WeekPlanner))
-    minibus.subscribe('html-template-text', () => this.setNote(WebStarterHtml))
+    minibus.subscribe(Clear_Text, () => this.setNote(''))
+    minibus.subscribe(Welcome_Text, () => this.setNote(welcomeText))
+    minibus.subscribe(Markdown_Text, () => this.setNote(markdownSampler))
+    minibus.subscribe(Todo_Template_Text, () => this.setNote(TodoTemplate))
+    minibus.subscribe(PMI_Template_Text, () => this.setNote(PMITemplate))
+    minibus.subscribe(Smart_Template_Text, () => this.setNote(SMARTTemplate))
+    minibus.subscribe(Week_Template_Text, () => this.setNote(WeekPlanner))
+    minibus.subscribe(HTML_Template_Text, () => this.setNote(WebStarterHtml))
   }
 
   render() {
@@ -71,8 +72,6 @@ class Editor extends Component {
     this.setState({ value: documents.activeNote.text })
     minibus.post('text-change', () => documents.activeNote)
   }
-
-  //activeNoteClear = event => this.update('')
 
   setNote = text => this.update(text)
 
