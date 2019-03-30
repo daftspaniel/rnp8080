@@ -1,11 +1,8 @@
 import React from 'react'
 
-import Minibus from '../../lib/Minibus'
+import BaseComponent from '../BaseComponent'
 
-const minibus = Minibus.getInstance()
-
-export class MenuItem extends React.Component {
-  state = {}
+export class MenuItem extends BaseComponent {
 
   render() {
     return (
@@ -22,7 +19,7 @@ export class MenuItem extends React.Component {
   }
 
   mouseClick = () => {
-    minibus.post(this.props.item.command)
+    this.minibus.post(this.props.item.command)
     this.props.close()
   }
 
@@ -30,7 +27,5 @@ export class MenuItem extends React.Component {
 
   mouseExit = () => this.setState({ hover: false })
 
-  getItemStyle = () => {
-    return { backgroundColor: this.state.hover ? 'white' : null }
-  }
+  getItemStyle = () => {return { backgroundColor: this.state.hover ? 'white' : null }}
 }

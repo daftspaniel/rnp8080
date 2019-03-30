@@ -1,16 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import ThemeManager from '../../lib/ThemeManager'
-import DocumentManager from '../../model/DocumentManager'
 import Menu from '../Menu/Menu'
 import { StartMenuItems, ModifyMenuItems, AboutMenuItems } from './MenuDefinitions'
+import Basecomponent from '../BaseComponent'
+import DocumentManager from '../../model/DocumentManager'
 
 import './MenuBar.css'
 
-const theme = ThemeManager.getInstance()
 const documents = DocumentManager.getInstance()
 
-class MenuBar extends Component {
+class MenuBar extends Basecomponent {
   render() {
     return (
       <div className="MenuBarContainer">
@@ -21,7 +20,7 @@ class MenuBar extends Component {
         <Menu name="Advanced" />
         <Menu name="View" />
         <Menu name="Help" items={AboutMenuItems} />
-        <button style={theme.getColorStyles()} onClick={this.download}>
+        <button style={this.theme.getColorStyles()} onClick={this.download}>
           Download
         </button>
       </div>

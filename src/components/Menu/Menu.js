@@ -1,19 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import ThemeManager from '../../lib/ThemeManager'
+import { MenuItem } from './MenuItem'
+import BaseComponent from '../BaseComponent'
 
 import './Menu.css'
-import { MenuItem } from './MenuItem'
 
-const theme = ThemeManager.getInstance()
-
-class Menu extends Component {
-  state = {}
+class Menu extends BaseComponent {
   render() {
     return (
       <div
         className="Menu"
-        style={theme.getColorStyles()}
+        style={this.theme.getColorStyles()}
         onMouseLeave={e => this.close(e)}
       >
         <div onClick={e => this.open(e)}>{this.props.name}</div>
@@ -21,7 +18,7 @@ class Menu extends Component {
           <div
             className="menuH"
             onMouseLeave={e => this.close(e)}
-            style={theme.getColorStyles()}
+            style={this.theme.getColorStyles()}
           >
             {this.props.items.map((item, index) =>
               this.renderMenuItem(item, index)
@@ -41,25 +38,19 @@ class Menu extends Component {
     )
   }
 
-  getMenuStyles() {
-    let styles = theme.getColorStyles()
-    return styles
-  }
+  getMenuStyles = () => this.theme.getColorStyles()
 
   getSeparator(item) {
     return item.separator ? (
-      <div className="menuSeparator" style={theme.getColorStyles()}>
+      <div className="menuSeparator" style={this.theme.getColorStyles()}>
         &nbsp;
       </div>
     ) : null
   }
-  
-  open = e => {
-    console.log('Open')
-    this.setState({ open: true })
-  }
+
+  open = e => this.setState({ open: true })
+
   close = e => {
-    console.log('Close')
     this.setState({ open: false })
     return false
   }
