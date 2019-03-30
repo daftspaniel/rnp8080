@@ -1,17 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import { Active_Note_Change } from '../../Events'
-import Minibus from '../../lib/Minibus'
-import ThemeManager from '../../lib/ThemeManager'
 import DocumentManager from '../../model/DocumentManager'
+import BaseComponent from '../BaseComponent'
 
 import './EditableLabel.css'
 
 const documents = DocumentManager.getInstance()
-const theme = ThemeManager.getInstance()
-const minibus = Minibus.getInstance()
 
-class EditableLabel extends Component {
+class EditableLabel extends BaseComponent {
   constructor(props) {
     super(props)
     this.state = {
@@ -19,7 +16,7 @@ class EditableLabel extends Component {
       editMode: false,
       text: props.note.downloadName,
     }
-    minibus.subscribe(Active_Note_Change, this.activeNoteChangeHandler)
+    this.minibus.subscribe(Active_Note_Change, this.activeNoteChangeHandler)
   }
 
   componentDidMount = () => this.activeNoteChangeHandler()
@@ -46,7 +43,7 @@ class EditableLabel extends Component {
   }
 
   getLabelStyle = () => {
-    let labelStyle = theme.get2ndColorStyles()
+    let labelStyle = this.theme.get2ndColorStyles()
     labelStyle.opacity = this.state.active ? '1' : '0.6'
     return labelStyle
   }

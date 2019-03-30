@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import Minibus from '../../lib/Minibus'
-import ThemeManager from '../../lib/ThemeManager'
+import BaseComponent from '../BaseComponent'
+import { Text_Change, Active_Note_Change } from '../../Events'
 import DocumentManager from '../../model/DocumentManager'
-
 import { Clear_Text, Welcome_Text, Markdown_Text, Todo_Template_Text, PMI_Template_Text, Smart_Template_Text, Week_Template_Text, HTML_Template_Text } from '../../Events'
 import { welcomeText, markdownSampler } from '../Resources/Resources'
 import { TodoTemplate, PMITemplate, SMARTTemplate, WeekPlanner, WebStarterHtml } from '../Resources/Template'
@@ -11,31 +10,28 @@ import { TodoTemplate, PMITemplate, SMARTTemplate, WeekPlanner, WebStarterHtml }
 import './Editor.css'
 
 const documents = DocumentManager.getInstance()
-const theme = ThemeManager.getInstance()
-const minibus = Minibus.getInstance()
 
-class Editor extends Component {
-  state = { value: '' }
+class Editor extends BaseComponent {
 
   componentDidMount() {
-    minibus.subscribe('active-note-change', this.activeNoteChangeHandler)
+    this.minibus.subscribe(Active_Note_Change, this.activeNoteChangeHandler)
     this.setupMenuCommands()
 
     if (documents.activeNote)
       this.setState({ value: documents.activeNote.text })
 
-    minibus.post('text-change', () => documents.activeNote)
+      this.minibus.post(Text_Change, () => documents.activeNote)
   }
 
   setupMenuCommands() {
-    minibus.subscribe(Clear_Text, () => this.setNote(''))
-    minibus.subscribe(Welcome_Text, () => this.setNote(welcomeText))
-    minibus.subscribe(Markdown_Text, () => this.setNote(markdownSampler))
-    minibus.subscribe(Todo_Template_Text, () => this.setNote(TodoTemplate))
-    minibus.subscribe(PMI_Template_Text, () => this.setNote(PMITemplate))
-    minibus.subscribe(Smart_Template_Text, () => this.setNote(SMARTTemplate))
-    minibus.subscribe(Week_Template_Text, () => this.setNote(WeekPlanner))
-    minibus.subscribe(HTML_Template_Text, () => this.setNote(WebStarterHtml))
+    this.minibus.subscribe(Clear_Text, () => this.setNote(''))
+    this.minibus.subscribe(Welcome_Text, () => this.setNote(welcomeText))
+    this.minibus.subscribe(Markdown_Text, () => this.setNote(markdownSampler))
+    this.minibus.subscribe(Todo_Template_Text, () => this.setNote(TodoTemplate))
+    this.minibus.subscribe(PMI_Template_Text, () => this.setNote(PMITemplate))
+    this.minibus.subscribe(Smart_Template_Text, () => this.setNote(SMARTTemplate))
+    this.minibus.subscribe(Week_Template_Text, () => this.setNote(WeekPlanner))
+    this.minibus.subscribe(HTML_Template_Text, () => this.setNote(WebStarterHtml))
   }
 
   render() {
@@ -47,7 +43,7 @@ class Editor extends Component {
           onChange={this.handleChange}
           value={this.state.value}
           autoFocus={true}
-          style={theme.getDocumentStyles()}
+          style={this.theme.getDocumentStyles()}
         />
       </div>
     )
@@ -56,7 +52,7 @@ class Editor extends Component {
   handleKeyPress = event => {
     // ALT T
     if (event.keyCode === 84 && event.altKey === true) {
-      theme.switchTheme()
+      this.theme.switchTheme()
     }
     // ALT ,
     else if (event.keyCode === 188 && event.altKey === true) {
@@ -70,7 +66,7 @@ class Editor extends Component {
 
   activeNoteChangeHandler = () => {
     this.setState({ value: documents.activeNote.text })
-    minibus.post('text-change', () => documents.activeNote)
+    this.minibus.post('text-change', () => documents.activeNote)
   }
 
   setNote = text => this.update(text)
