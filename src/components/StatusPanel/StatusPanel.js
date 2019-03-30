@@ -1,27 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 
+import BaseComponent from '../BaseComponent'
 import { Text_Change } from '../../Events'
-
-import ThemeManager from '../../lib/ThemeManager'
-import Minibus from '../../lib/Minibus'
 import StringProcess from '../../lib/StringProcess'
 
 import './StatusPanel.css'
 
-const theme = ThemeManager.getInstance()
-const minibus = Minibus.getInstance()
-
-class StatusPanel extends Component {
+class StatusPanel extends BaseComponent {
   constructor(props) {
     super(props)
-    minibus.subscribe(Text_Change, this.update)
+    this.minibus.subscribe(Text_Change, this.update)
     this.textProcessor = new StringProcess()
-    this.state = {}
   }
 
   render() {
     return (
-      <div style={theme.getColorStyles()} className="StatusContainer">
+      <div style={this.theme.getColorStyles()} className="StatusContainer">
         <div className="infoItem">Chars: {this.state.charcount}</div>
         <div className="infoItem">Lines: {this.state.linecount}</div>
         <div className="infoItem">Words: {this.state.wordcount}</div>

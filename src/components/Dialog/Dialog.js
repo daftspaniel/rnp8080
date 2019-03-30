@@ -1,13 +1,11 @@
-import React,{ Component } from 'react'
-import ThemeManager from '../../lib/ThemeManager'
-import Minibus from '../../lib/Minibus'
+import React from 'react'
 
-export class Dialog extends Component {
+import BaseComponent from '../BaseComponent'
+
+export class Dialog extends BaseComponent {
     constructor(props) {
         super(props)
         this.state = { visible: false }
-        this.theme = ThemeManager.getInstance()
-        this.minibus = Minibus.getInstance()
     }
 
     close = (e) => this.setState({ visible: false })
