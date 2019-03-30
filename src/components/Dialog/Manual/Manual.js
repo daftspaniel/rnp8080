@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { Show_Manual_Dialog } from '../../../Events'
-import { welcomeText } from '../../Resources/Resources'
 
 import '../Dialog.css'
 import './Manual.css'
