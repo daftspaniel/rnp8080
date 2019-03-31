@@ -52,7 +52,7 @@ export const StartMenuItems = [
 export const ModifyMenuItems = [
   {
     name: 'Replace...',
-    info: 'Replace text with different text.\nShortcut - Ctrl + Q',
+    info: 'Replace text with different text.\nCtrl + Q',
     separator: false,
   },
   {
@@ -91,3 +91,5 @@ export const AboutMenuItems = [
     command: 'show-manual-dialog'
   }
 ]
+
+export const AllMenus = [StartMenuItems, ModifyMenuItems, AboutMenuItems]
