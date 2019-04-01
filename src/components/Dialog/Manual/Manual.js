@@ -20,7 +20,7 @@ class ManualDialog extends Dialog {
         return (
             <div className="dialogPanel ManualDialog" style={this.theme.getColorStyles()}>
                 {this.renderCloseCross()}
-                <div className="header" style={this.theme.get2ndColorStyles()}>Notepad 8080 - Manual</div >
+                {this.renderHeader('About Notepad 8080')}
                 <textarea readOnly cols="85" className="textBox" defaultValue={this.text}></textarea>
                 <br />
                 <button onClick={this.close}>Close</button>

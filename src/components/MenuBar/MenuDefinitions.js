@@ -1,3 +1,5 @@
+import { Show_Replace_Dialog } from '../../Events'
+
 export const StartMenuItems = [
   {
     name: 'Clear text',
@@ -54,6 +56,7 @@ export const ModifyMenuItems = [
     name: 'Replace...',
     info: 'Replace text with different text.\nCtrl + Q',
     separator: false,
+    command: Show_Replace_Dialog
   },
   {
     name: 'Pre/Post...',

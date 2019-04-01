@@ -10,6 +10,7 @@ import StatusPanel from './components/StatusPanel/StatusPanel'
 
 import AboutDialog from './components/Dialog/About/About'
 import ManualDialog from './components/Dialog/Manual/Manual'
+import ReplaceDialog from './components/Dialog/Replace/Replace'
 
 import AppManager from './model/AppManager'
 import { loadValue } from './lib/Storage'
@@ -33,6 +34,7 @@ class App extends BaseComponent {
       <div className="App" style={this.theme.getColorStyles()}>
         <AboutDialog />
         <ManualDialog />
+        <ReplaceDialog />
         <MenuBar />
         <TabBar />
         <Editor />

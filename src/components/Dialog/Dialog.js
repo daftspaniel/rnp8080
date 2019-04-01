@@ -13,4 +13,6 @@ export class Dialog extends BaseComponent {
     show = (e) => this.setState({ visible: true })
 
     renderCloseCross = () => <div onClick={this.close} className="closeCross">X</div>
+
+    renderHeader = (text) => <div className="header" style={this.theme.get2ndColorStyles()}>{text}</div >
 }

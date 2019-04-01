@@ -4,6 +4,7 @@ export const Text_Change = 'text-change'
 
 export const Show_About_Dialog = 'show-about-dialog'
 export const Show_Manual_Dialog = 'show-manual-dialog'
+export const Show_Replace_Dialog = 'show-replace-dialog'
 
 export const Clear_Text = 'clear-text'
 export const Welcome_Text = 'welcome-text'

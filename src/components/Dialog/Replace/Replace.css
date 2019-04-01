@@ -1,0 +1,19 @@
+.Positioners {
+  position: absolute;
+  top: 0;
+  left: 0;
+  float: right;
+  margin-bottom: 0;
+  padding: 3px;
+}
+.miniActionButton {
+  width: 20px;
+  border: 0;
+  margin: 0;
+  font-weight: bold;
+  height: 16px;
+}
+.ActionButtons {
+    display:flex;
+    flex-direction: row;
+}

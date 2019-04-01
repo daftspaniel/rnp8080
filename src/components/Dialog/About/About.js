@@ -19,7 +19,7 @@ class AboutDialog extends Dialog {
         return (
             <div className="dialogPanel AboutDialog" style={this.theme.getColorStyles()}>
                 {this.renderCloseCross()}
-                <div className="header" style={this.theme.get2ndColorStyles()}>About Notepad 8080 v</div >
+                {this.renderHeader('About Notepad 8080')}
                 <textarea readOnly cols="85" className="textBox" defaultValue={welcomeText}></textarea>
                 <br />
                 <button onClick={this.close}>Close</button>
