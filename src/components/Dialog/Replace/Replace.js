@@ -1,42 +1,45 @@
 import React from 'react'
 
-import { Show_Replace_Dialog } from '../../../Events'
+import { Dialog } from '../Dialog'
+import Draggable from 'react-draggable'
+import { Replace_Text, Show_Replace_Dialog } from '../../../Events'
 
 import '../Dialog.css'
 import './Replace.css'
 
-import { Dialog } from '../Dialog';
-import Draggable from 'react-draggable';
+const Placeholder_Text = 'Type text here ...'
 
 class ReplaceDialog extends Dialog {
     constructor(props) {
         super(props)
         this.minibus.subscribe(Show_Replace_Dialog, () => this.show())
-        this.state = { target: 'asdf' }
+        this.state = { target: '', replacement: '' }
     }
 
     render() {
         if (!this.state.visible) return null
-        return (<Draggable>
+        return (
             <div className="dialogPanel ReplaceDialog" style={this.theme.getColorStyles()}>
                 {this.renderCloseCross()}
-                {this.renderHeader('Replace')}
+                <Draggable>{this.renderHeader('Replace')}</Draggable>
                 {this.replaceDialogContent()}
             </div >
-        </Draggable>)
+        )
     }
 
-    onTargetChange(event) {
-        this.setState({ target: event.target.value });
-    }
+    onTargetChange = (event) => this.setState({ target: event.target.value })
+
+    onReplacementChange = (event) => this.setState({ replacement: event.target.value })
+
+    replaceText = () => this.minibus.post(Replace_Text, () => { return { target: this.state.target, replacement: this.state.replacement } })
 
     replaceDialogContent = () => (
         <div>
             <div>
                 <label>Replace</label>
-                <input type="text" placeholder="Type text here..." tabIndex="221" id="targetTextbox" value={this.state.target} onChange={this.onTargetChange} />
+                <input type="text" placeholder={Placeholder_Text} tabIndex="221" defaultValue={this.state.target} onChange={this.onTargetChange} />
                 <label> with </label>
-                <input type="text" placeholder="Type text here..." tabIndex="222" id="replaceTextbox" />
+                <input type="text" placeholder={Placeholder_Text} tabIndex="222" value={this.state.replacement} onChange={this.onReplacementChange} />
                 <br />
                 <br />
                 <input type="checkbox" tabIndex="223" /> Add a newline AFTER each replacement
@@ -45,8 +48,8 @@ class ReplaceDialog extends Dialog {
                         <br />
                 <br />
                 <div className="ActionButtons">
-                    <button>Replace</button>
-                    <button>Close</button>
+                    <button onClick={this.replaceText}>Replace</button>
+                    <button onClick={this.close}>Close</button>
                 </div>
             </div>
         </div>

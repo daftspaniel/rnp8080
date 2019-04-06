@@ -10,6 +10,10 @@ it('trims whitespace on text', () => {
   expect(tp.trim(' Hello ')).toEqual('Hello')
 })
 
+it('removes numbers from text', () => {
+  expect(tp.denumber(' Hello123 ')).toEqual(' Hello ')
+})
+
 it('counts word', () => {
   expect(tp.getWordCount(' Hello ')).toEqual(1)
   expect(tp.getWordCount(' hello world. ')).toEqual(2)
@@ -30,7 +34,7 @@ it('counts sentences correctly.', () => {
   expect(tp.getSentenceCount('hello to you.')).toEqual(1)
   expect(tp.getSentenceCount('hello to you')).toEqual(1)
   expect(tp.getSentenceCount('23. hello to you.')).toEqual(1)
-  expect(tp.getSentenceCount('ello there are monkeys. Yes, there is. No! I don\'t know? hmmm')).toEqual(3)
+  expect(tp.getSentenceCount('ello there are monkeys. Yes, there is. No! I don\'t know? hmmm')).toEqual(5)
   expect(
     tp.getSentenceCount(`1. turnip
   23. hello to you.

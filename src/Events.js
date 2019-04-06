@@ -14,3 +14,5 @@ export const PMI_Template_Text = 'pmi-template-text'
 export const Smart_Template_Text = 'smart-template-text'
 export const Week_Template_Text = 'week-template-text'
 export const HTML_Template_Text = 'html-template-text'
+
+export const Replace_Text = 'replace-text'

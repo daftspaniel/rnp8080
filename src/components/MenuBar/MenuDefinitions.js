@@ -1,17 +1,17 @@
-import { Show_Replace_Dialog } from '../../Events'
+import { Show_Replace_Dialog, Clear_Text, Welcome_Text } from '../../Events'
 
 export const StartMenuItems = [
   {
     name: 'Clear text',
     info: 'Start again with an empty file.',
     separator: true,
-    command: 'clear-text',
+    command: Clear_Text,
   },
   {
     name: 'Welcome text',
     info: 'Put sample text into the file.',
     separator: false,
-    command: 'welcome-text',
+    command: Welcome_Text,
   },
   {
     name: 'Markdown',

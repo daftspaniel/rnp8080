@@ -1,7 +1,7 @@
 const DefaultLineEnding = '\n'
 
 class StringProcess {
-  constructor(lineEnding  = DefaultLineEnding) {
+  constructor(lineEnding = DefaultLineEnding) {
     this.lineend = lineEnding
   }
 
@@ -49,9 +49,7 @@ class StringProcess {
   ///Returns a string with input having 0123456789 removed.
   denumber = text => text.replace(/[0-9]/g, '')
 
-  replaceAll = (text, target, replacement) => {
-    return text.replace(new RegExp('/' + target + '/', 'g'), replacement)
-  }
+  replaceAll = (text, target, replacement) => text.split(target).join(replacement)
 }
 
 export default StringProcess
