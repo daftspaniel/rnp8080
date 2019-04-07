@@ -19,11 +19,13 @@ class ReplaceDialog extends Dialog {
     render() {
         if (!this.state.visible) return null
         return (
-            <div className="dialogPanel ReplaceDialog" style={this.theme.getColorStyles()}>
-                {this.renderCloseCross()}
-                <Draggable>{this.renderHeader('Replace')}</Draggable>
-                {this.replaceDialogContent()}
-            </div >
+            <Draggable handle=".handle">
+                <div className="dialogPanel ReplaceDialog" style={this.theme.getColorStyles()}>
+                    {this.renderCloseCross()}
+                    <div className="handle">{this.renderHeader('Replace')}</div>
+                    {this.replaceDialogContent()}
+                </div >
+            </Draggable>
         )
     }
 
