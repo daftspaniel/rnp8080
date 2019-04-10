@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { Dialog } from '../Dialog'
-import Draggable from 'react-draggable'
 import { Replace_Text, Show_Replace_Dialog } from '../../../Events'
 
 import '../Dialog.css'
@@ -18,14 +17,15 @@ class ReplaceDialog extends Dialog {
 
     render() {
         if (!this.state.visible) return null
-        return (
-            <Draggable handle=".handle">
+
+        return this.renderDragbar(
+            () => (
                 <div className="dialogPanel ReplaceDialog" style={this.theme.getColorStyles()}>
                     {this.renderCloseCross()}
                     <div className="handle">{this.renderHeader('Replace')}</div>
                     {this.replaceDialogContent()}
                 </div >
-            </Draggable>
+            )
         )
     }
 
@@ -45,9 +45,9 @@ class ReplaceDialog extends Dialog {
                 <br />
                 <br />
                 <input type="checkbox" tabIndex="223" /> Add a newline AFTER each replacement
-                        <br />
+                <br />
                 <input type="checkbox" tabIndex="224" /> Add a newline BEFORE each replacement
-                        <br />
+                <br />
                 <br />
                 <div className="ActionButtons">
                     <button onClick={this.replaceText}>Replace</button>
