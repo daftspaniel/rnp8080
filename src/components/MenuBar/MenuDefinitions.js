@@ -1,4 +1,4 @@
-import { Show_Replace_Dialog, Clear_Text, Welcome_Text } from '../../Events'
+import { Show_PrePost_Dialog, Show_Replace_Dialog, Clear_Text, Welcome_Text } from '../../Events'
 
 export const StartMenuItems = [
   {
@@ -62,6 +62,7 @@ export const ModifyMenuItems = [
     name: 'Pre/Post...',
     info: 'Add text to start and/or end of lines.',
     separator: true,
+    command: Show_PrePost_Dialog
   },
   {
     name: 'Number',

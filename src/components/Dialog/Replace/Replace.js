@@ -13,6 +13,7 @@ class ReplaceDialog extends Dialog {
         super(props)
         this.minibus.subscribe(Show_Replace_Dialog, () => this.show())
         this.state = { target: '', replacement: '' }
+        this.title = 'Replace'
     }
 
     render() {
@@ -21,8 +22,7 @@ class ReplaceDialog extends Dialog {
         return this.renderDragbar(
             () => (
                 <div className="dialogPanel ReplaceDialog" style={this.theme.getColorStyles()}>
-                    {this.renderCloseCross()}
-                    <div className="handle">{this.renderHeader('Replace')}</div>
+                    {this.renderTitleBar()}
                     {this.replaceDialogContent()}
                 </div >
             )
