@@ -55,3 +55,12 @@ it('postfix each line correctly.', () => {
   expect(tp.postfixLines("asdf\nxyzz\n", "12345")).toEqual("asdf12345\nxyzz12345\n12345")
   expect(tp.postfixLines("Coffee", "Cup")).toEqual("CoffeeCup")
 })
+
+it('numbers lines correctly.', () => {
+  expect(tp.addNumbering("")).toEqual('')
+  expect(tp.addNumbering("Hello")).toEqual("1. Hello\n")
+  expect(tp.addNumbering("Hello\nWorld\n")).toEqual("1. Hello\n2. World\n")
+  expect(tp.addNumbering("Hello\nWorld\nWorms\n")).toEqual(
+    "1. Hello\n2. World\n3. Worms\n")
+  expect(tp.addNumbering("Hello\n\nWorld\nWorms\n")).toEqual("1. Hello\n\n2. World\n3. Worms\n")
+})
