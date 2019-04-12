@@ -1,7 +1,7 @@
 import React from 'react'
 
 import BaseComponent from '../BaseComponent'
-import { Replace_Text, Text_Change, Active_Note_Change } from '../../Events'
+import { PrePost_Text, Replace_Text, Text_Change, Active_Note_Change } from '../../Events'
 import DocumentManager from '../../model/DocumentManager'
 import { Clear_Text, Welcome_Text, Markdown_Text, Todo_Template_Text, PMI_Template_Text, Smart_Template_Text, Week_Template_Text, HTML_Template_Text } from '../../Events'
 import { welcomeText, markdownSampler } from '../Resources/Resources'
@@ -36,6 +36,7 @@ class Editor extends BaseComponent {
     this.minibus.subscribe(HTML_Template_Text, () => this.setNote(WebStarterHtml))
 
     this.minibus.subscribe(Replace_Text, this.replaceTextHandler)
+    this.minibus.subscribe(PrePost_Text, this.prePostTextHandler)
   }
 
   render() {
@@ -85,8 +86,13 @@ class Editor extends BaseComponent {
   replaceTextHandler = (replacement) => {
     let data = replacement()
     let updatedText = textProcessor.replaceAll(documents.activeNote.text, data.target, data.replacement)
-    //updatedText = textProcessor.denumber(documents.activeNote.text)
-    console.log(data, updatedText)
+    this.update(updatedText)
+  }
+
+  prePostTextHandler = (prepost) => {
+    let data = prepost()
+    let updatedText = textProcessor.prefixLines(documents.activeNote.text, data.pre)
+    updatedText = textProcessor.postfixLines(updatedText, data.post)
     this.update(updatedText)
   }
 }

@@ -42,3 +42,16 @@ it('counts sentences correctly.', () => {
   4. Hope this works!`)
   ).toEqual(4)
 })
+it('prefix each line correctly.', () => {
+  expect(tp.prefixLines("", "TEST")).toEqual("TEST")
+  expect(tp.prefixLines("a\nb\n", "TEST")).toEqual("TESTa\nTESTb\nTEST")
+  expect(tp.prefixLines("asdf\nxyzz\n", "12345")).toEqual("12345asdf\n12345xyzz\n12345")
+  expect(tp.prefixLines("Coffee", "Cup")).toEqual("CupCoffee")
+})
+
+it('postfix each line correctly.', () => {
+  expect(tp.postfixLines("", "TEST")).toEqual("TEST")
+  expect(tp.postfixLines("a\nb\n", "TEST")).toEqual("aTEST\nbTEST\nTEST")
+  expect(tp.postfixLines("asdf\nxyzz\n", "12345")).toEqual("asdf12345\nxyzz12345\n12345")
+  expect(tp.postfixLines("Coffee", "Cup")).toEqual("CoffeeCup")
+})

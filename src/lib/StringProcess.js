@@ -5,6 +5,8 @@ class StringProcess {
     this.lineend = lineEnding
   }
 
+  getSegments = text => text.split(this.lineend)
+
   reverse(text) {
     return text
       .split('')
@@ -49,7 +51,34 @@ class StringProcess {
   ///Returns a string with input having 0123456789 removed.
   denumber = text => text.replace(/[0-9]/g, '')
 
+  ///Replace of all occurances of a string with a substitute.
   replaceAll = (text, target, replacement) => text.split(target).join(replacement)
+
+  ///Add a string to the start of each line in a string.
+  prefixLines(text, prefix) {
+    let segments = this.getSegments(text)
+    let out = ''
+    for (let i = 0; i < segments.length; i++) {
+      out += prefix + segments[i]
+      if (i < (segments.length - 1)) {
+        out += '\n'
+      }
+    }
+    return out
+  }
+
+  ///Add a string to the end of each line in a string.
+  postfixLines(text, postfix) {
+    let segments = this.getSegments(text)
+    let out = ''
+    for (let i = 0; i < segments.length; i++) {
+      out += segments[i] + postfix
+      if (i < (segments.length - 1)) {
+        out += '\n'
+      }
+    }
+    return out
+  }
 }
 
 export default StringProcess
