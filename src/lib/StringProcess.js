@@ -81,7 +81,7 @@ class StringProcess {
   }
 
   addNumbering(text) {
-    if (text.length == 0) return ''
+    if (text.length === 0) return ''
 
     var segments = this.getSegments(text)
     let out = ''
@@ -90,7 +90,7 @@ class StringProcess {
       if (segments[i].length > 0) {
         out += `${numberingIndex}. ` + segments[i] + '\n'
         numberingIndex++
-      } else if (i + 1 != segments.length) {
+      } else if (i + 1 !== segments.length) {
         out += segments[i] + '\n'
       }
     }
