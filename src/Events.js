@@ -18,3 +18,4 @@ export const HTML_Template_Text = 'html-template-text'
 
 export const Replace_Text = 'replace-text'
 export const PrePost_Text = 'prepost-text'
+export const Number_Lines = 'number-lines'

@@ -1,4 +1,4 @@
-import { Show_PrePost_Dialog, Show_Replace_Dialog, Clear_Text, Welcome_Text } from '../../Events'
+import { Show_PrePost_Dialog, Show_Replace_Dialog, Clear_Text, Welcome_Text, Number_Lines } from '../../Events'
 
 export const StartMenuItems = [
   {
@@ -68,6 +68,7 @@ export const ModifyMenuItems = [
     name: 'Number',
     info: 'Number non-blank lines.',
     separator: false,
+    command: Number_Lines
   },
   {
     name: 'Tabs to Spaces',

@@ -3,7 +3,7 @@ import React from 'react'
 import BaseComponent from '../BaseComponent'
 import { PrePost_Text, Replace_Text, Text_Change, Active_Note_Change } from '../../Events'
 import DocumentManager from '../../model/DocumentManager'
-import { Clear_Text, Welcome_Text, Markdown_Text, Todo_Template_Text, PMI_Template_Text, Smart_Template_Text, Week_Template_Text, HTML_Template_Text } from '../../Events'
+import { Clear_Text, Welcome_Text, Markdown_Text, Todo_Template_Text, PMI_Template_Text, Smart_Template_Text, Week_Template_Text, HTML_Template_Text, Number_Lines } from '../../Events'
 import { welcomeText, markdownSampler } from '../Resources/Resources'
 import { TodoTemplate, PMITemplate, SMARTTemplate, WeekPlanner, WebStarterHtml } from '../Resources/Template'
 import StringProcess from '../../lib/StringProcess'
@@ -37,6 +37,7 @@ class Editor extends BaseComponent {
 
     this.minibus.subscribe(Replace_Text, this.replaceTextHandler)
     this.minibus.subscribe(PrePost_Text, this.prePostTextHandler)
+    this.minibus.subscribe(Number_Lines, this.numberHandler)
   }
 
   render() {
@@ -94,6 +95,10 @@ class Editor extends BaseComponent {
     let updatedText = textProcessor.prefixLines(documents.activeNote.text, data.pre)
     updatedText = textProcessor.postfixLines(updatedText, data.post)
     this.update(updatedText)
+  }
+
+  numberHandler = () => {
+    this.update(textProcessor.addNumbering(documents.activeNote.text))
   }
 }
 
