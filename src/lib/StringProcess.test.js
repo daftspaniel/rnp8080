@@ -64,3 +64,9 @@ it('numbers lines correctly.', () => {
     "1. Hello\n2. World\n3. Worms\n")
   expect(tp.addNumbering("Hello\n\nWorld\nWorms\n")).toEqual("1. Hello\n\n2. World\n3. Worms\n")
 })
+
+it('convert tabs to spaces', () => {
+  expect(
+    tp.convertTabsToSpace('this\tis\tTABBED.')).toEqual('this    is    TABBED.')
+  expect(tp.convertTabsToSpace('this\tis\tTABBED.', 2)).toEqual('this  is  TABBED.')
+})

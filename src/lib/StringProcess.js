@@ -97,6 +97,11 @@ class StringProcess {
     return out
   }
 
+  convertTabsToSpace(text, numberOfSpaces = 4) {
+    let spaces = ' '.repeat(numberOfSpaces)
+    return this.replaceAll(text, '\t', spaces)
+  }
+
 }
 
 export default StringProcess
