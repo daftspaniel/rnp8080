@@ -1,4 +1,4 @@
-import { Show_PrePost_Dialog, Show_Replace_Dialog, Clear_Text, Welcome_Text, Number_Lines } from '../../Events'
+import { Show_PrePost_Dialog, Show_Replace_Dialog, Clear_Text, Welcome_Text, Number_Lines, Change_Tabs_To_Spaces } from '../../Events'
 
 export const StartMenuItems = [
   {
@@ -74,6 +74,7 @@ export const ModifyMenuItems = [
     name: 'Tabs to Spaces',
     info: 'Convert tab characters to spaces.',
     separator: false,
+    command: Change_Tabs_To_Spaces
   },
   {
     name: 'Doublespace',

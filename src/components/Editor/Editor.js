@@ -1,12 +1,13 @@
 import React from 'react'
 
 import BaseComponent from '../BaseComponent'
-import { PrePost_Text, Replace_Text, Text_Change, Active_Note_Change } from '../../Events'
 import DocumentManager from '../../model/DocumentManager'
-import { Clear_Text, Welcome_Text, Markdown_Text, Todo_Template_Text, PMI_Template_Text, Smart_Template_Text, Week_Template_Text, HTML_Template_Text, Number_Lines } from '../../Events'
+import StringProcess from '../../lib/StringProcess'
+import { PrePost_Text, Replace_Text, Text_Change, Active_Note_Change } from '../../Events'
+import { Clear_Text, Welcome_Text, Markdown_Text, Todo_Template_Text, PMI_Template_Text, Smart_Template_Text, Week_Template_Text, HTML_Template_Text, Number_Lines, Change_Tabs_To_Spaces } from '../../Events'
 import { welcomeText, markdownSampler } from '../Resources/Resources'
 import { TodoTemplate, PMITemplate, SMARTTemplate, WeekPlanner, WebStarterHtml } from '../Resources/Template'
-import StringProcess from '../../lib/StringProcess'
+
 
 import './Editor.css'
 
@@ -38,6 +39,7 @@ class Editor extends BaseComponent {
     this.minibus.subscribe(Replace_Text, this.replaceTextHandler)
     this.minibus.subscribe(PrePost_Text, this.prePostTextHandler)
     this.minibus.subscribe(Number_Lines, this.numberHandler)
+    this.minibus.subscribe(Change_Tabs_To_Spaces, this.tabsToSpacesHandler)
   }
 
   render() {
@@ -56,18 +58,21 @@ class Editor extends BaseComponent {
   }
 
   handleKeyPress = event => {
+    // Tab
+    if (event.keyCode === 9) this.tabHandler()
     // ALT T
-    if (event.keyCode === 84 && event.altKey === true) {
+    else if (event.keyCode === 84 && event.altKey)
       this.theme.switchTheme()
-    }
     // ALT ,
-    else if (event.keyCode === 188 && event.altKey === true) {
+    else if (event.keyCode === 188 && event.altKey)
       documents.moveToPreviousTab()
-    }
-    else // ALT .
-      if (event.keyCode === 190 && event.altKey === true) {
-        documents.moveToNextTab()
-      }
+    // ALT .
+    else if (event.keyCode === 190 && event.altKey)
+      documents.moveToNextTab()
+  }
+
+  tabHandler = () => {
+    return false
   }
 
   activeNoteChangeHandler = () => {
@@ -97,9 +102,10 @@ class Editor extends BaseComponent {
     this.update(updatedText)
   }
 
-  numberHandler = () => {
-    this.update(textProcessor.addNumbering(documents.activeNote.text))
-  }
+  numberHandler = () => this.update(textProcessor.addNumbering(documents.activeNote.text))
+
+  tabsToSpacesHandler = () => this.update(textProcessor.convertTabsToSpace(documents.activeNote.text))
+
 }
 
 export default Editor
