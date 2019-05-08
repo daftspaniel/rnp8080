@@ -79,6 +79,30 @@ export const ModifyMenuItems = [
   {
     name: 'Doublespace',
     info: 'Double space the lines.',
+    separator: true,
+    command: Double_Space_Lines
+  }, 
+  {
+    name: 'Reverse',
+    info: 'Reverse the line order.',
+    separator: false,
+    command: Double_Space_Lines
+  },
+  {
+    name: 'Randomise',
+    info: 'Randomise the line order.',
+    separator: true,
+    command: Double_Space_Lines
+  },
+    {
+    name: 'Sort A to Z',
+    info: 'Reverse the line order.',
+    separator: false,
+    command: Double_Space_Lines
+  },
+  {
+    name: 'Sort by line length',
+    info: 'Sort lines by length - shortest to longest.',
     separator: false,
     command: Double_Space_Lines
   },
