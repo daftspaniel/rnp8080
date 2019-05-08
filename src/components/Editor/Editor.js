@@ -3,7 +3,7 @@ import React from 'react'
 import BaseComponent from '../BaseComponent'
 import DocumentManager from '../../model/DocumentManager'
 import StringProcess from '../../lib/StringProcess'
-import { PrePost_Text, Replace_Text, Text_Change, Active_Note_Change } from '../../Events'
+import { Double_Space_Lines, PrePost_Text, Replace_Text, Text_Change, Active_Note_Change } from '../../Events'
 import { Clear_Text, Welcome_Text, Markdown_Text, Todo_Template_Text, PMI_Template_Text, Smart_Template_Text, Week_Template_Text, HTML_Template_Text, Number_Lines, Change_Tabs_To_Spaces } from '../../Events'
 import { welcomeText, markdownSampler } from '../Resources/Resources'
 import { TodoTemplate, PMITemplate, SMARTTemplate, WeekPlanner, WebStarterHtml } from '../Resources/Template'
@@ -40,6 +40,7 @@ class Editor extends BaseComponent {
     this.minibus.subscribe(PrePost_Text, this.prePostTextHandler)
     this.minibus.subscribe(Number_Lines, this.numberHandler)
     this.minibus.subscribe(Change_Tabs_To_Spaces, this.tabsToSpacesHandler)
+    this.minibus.subscribe(Double_Space_Lines, this.doubleSpaceLines)
   }
 
   render() {
@@ -106,6 +107,7 @@ class Editor extends BaseComponent {
 
   tabsToSpacesHandler = () => this.update(textProcessor.convertTabsToSpace(documents.activeNote.text))
 
+  doubleSpaceLines = () => this.update(textProcessor.doubleSpaceLines(documents.activeNote.text))
 }
 
 export default Editor

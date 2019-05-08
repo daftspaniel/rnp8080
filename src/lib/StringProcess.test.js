@@ -70,3 +70,11 @@ it('convert tabs to spaces', () => {
     tp.convertTabsToSpace('this\tis\tTABBED.')).toEqual('this    is    TABBED.')
   expect(tp.convertTabsToSpace('this\tis\tTABBED.', 2)).toEqual('this  is  TABBED.')
 })
+
+it('doublespace text', () => {
+  expect(tp.doubleSpaceLines('')).toEqual('')
+  expect(tp.doubleSpaceLines('Moo\n')).toEqual('Moo\n\n')
+  expect(tp.doubleSpaceLines('Moo\nBaa')).toEqual('Moo\n\nBaa')
+  expect(tp.doubleSpaceLines('Moo\nBaa\n')).toEqual('Moo\n\nBaa\n\n')
+  expect(tp.doubleSpaceLines('Moo\n\nBaa\n')).toEqual('Moo\n\n\n\nBaa\n\n')
+})

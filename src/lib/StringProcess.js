@@ -102,6 +102,11 @@ class StringProcess {
     return this.replaceAll(text, '\t', spaces)
   }
 
+  doubleSpaceLines(text) {
+    console.log(text)
+    return this.replaceAll(text, '\n', '\n\n')
+  }
+
 }
 
 export default StringProcess
