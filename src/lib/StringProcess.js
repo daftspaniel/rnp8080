@@ -103,7 +103,6 @@ class StringProcess {
   }
 
   doubleSpaceLines(text) {
-    console.log(text)
     return this.replaceAll(text, '\n', '\n\n')
   }
 
