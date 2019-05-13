@@ -78,3 +78,9 @@ it('doublespace text', () => {
   expect(tp.doubleSpaceLines('Moo\nBaa\n')).toEqual('Moo\n\nBaa\n\n')
   expect(tp.doubleSpaceLines('Moo\n\nBaa\n')).toEqual('Moo\n\n\n\nBaa\n\n')
 })
+
+it('reverse text', () => {
+  expect(tp.reverse('')).toEqual('')
+  expect(tp.reverse('Moo')).toEqual('ooM')
+  expect(tp.reverse("Zebras are cool!\nMonkeys are okay!\nDogs are the best!\n")).toEqual('Dogs are the best!\nMonkeys are okay!\nZebras are cool!')
+})

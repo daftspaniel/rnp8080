@@ -7,13 +7,6 @@ class StringProcess {
 
   getSegments = text => text.split(this.lineend)
 
-  reverse(text) {
-    return text
-      .split('')
-      .reverse()
-      .join('')
-  }
-
   trim = text => text.trim()
 
   getWordCount(text) {
@@ -106,6 +99,30 @@ class StringProcess {
     return this.replaceAll(text, '\n', '\n\n')
   }
 
+  reverseString(text) {
+    return text
+      .split('')
+      .reverse()
+      .join('')
+  }
+
+  reverse(text) {
+    const delimiter = text.includes('\n') ? '\n' : ' '
+    return this.reverseDelimiter(text, delimiter)
+  }
+
+  reverseDelimiter(text, delimiter) {
+    const segments = text.split(delimiter)
+    let out = ''
+    if (!text.includes('\n'))
+      out = this.reverseString(text)
+    else {
+      segments.forEach((line) => {
+        out = line + delimiter + out
+      })
+    }
+    return out.trim()
+  }
 }
 
 export default StringProcess

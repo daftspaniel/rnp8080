@@ -1,4 +1,4 @@
-import { Double_Space_Lines, Show_PrePost_Dialog, Show_Replace_Dialog, Clear_Text, Welcome_Text, Number_Lines, Change_Tabs_To_Spaces } from '../../Events'
+import { Double_Space_Lines, Show_PrePost_Dialog, Show_Replace_Dialog, Clear_Text, Welcome_Text, Number_Lines, Change_Tabs_To_Spaces, Reverse } from '../../Events'
 
 export const StartMenuItems = [
   {
@@ -86,7 +86,7 @@ export const ModifyMenuItems = [
     name: 'Reverse',
     info: 'Reverse the line order.',
     separator: false,
-    command: Double_Space_Lines
+    command: Reverse
   },
   {
     name: 'Randomise',
