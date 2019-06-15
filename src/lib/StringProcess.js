@@ -73,6 +73,7 @@ class StringProcess {
     return out
   }
 
+  /// Number lines of the text.
   addNumbering(text) {
     if (text.length === 0) return ''
 
@@ -90,15 +91,18 @@ class StringProcess {
     return out
   }
 
+  /// Replace tabs with spaces.
   convertTabsToSpace(text, numberOfSpaces = 4) {
     let spaces = ' '.repeat(numberOfSpaces)
     return this.replaceAll(text, '\t', spaces)
   }
 
+  /// Double the line spacing in the text.
   doubleSpaceLines(text) {
     return this.replaceAll(text, this.lineEnding, this.lineEnding + this.lineEnding)
   }
 
+  /// Reverse the text in a string.
   reverseString(text) {
     return text
       .split('')
@@ -106,30 +110,33 @@ class StringProcess {
       .join('')
   }
 
+  /// Reverse text after determining 1 line or multi.
   reverse(text) {
     const delimiter = text.includes(this.lineEnding) ? this.lineEnding : ' '
     return this.reverseDelimiter(text, delimiter)
   }
 
+  /// Reverse text with specified delimiter.
   reverseDelimiter(text, delimiter) {
     const segments = this.getSegments(text)
     let out = ''
     if (!text.includes(this.lineEnding))
       out = this.reverseString(text)
-    else {
+    else
       segments.forEach((line) => {
         out = line + delimiter + out
       })
-    }
+
     return out.trim()
   }
 
+  // Split
   randomise(text) {
     let out = ''
     const segments = this.getSegments(text).sort((a, b) => {
-      let ren = Math.random()
-      if (ren === 0.5) return 0
-      return ren > 0.5 ? 1 : -1
+      let r = Math.random()
+      if (r === 0.5) return 0
+      return r > 0.5 ? 1 : -1
     })
     for (let i = 0; i < segments.length; i++) {
       if (segments[i].length > 0) out += segments[i]
@@ -137,6 +144,23 @@ class StringProcess {
         out += this.lineEnding
     }
     return out
+  }
+
+  /// Sort in alphabetical after determining 1 line or multi.
+  sort(text) {
+    let delimiter = text.includes(this.lineEnding) ? this.lineEnding : ' '
+    return this.sortDelimiter(text, delimiter)
+  }
+
+  /// Sort in alphabetical order.
+  sortDelimiter(text, delimiter) {
+    let out = ''
+    const segments = text.split(delimiter)
+    segments.sort()
+    segments.forEach((line) => {
+      out += line + delimiter
+    })
+    return out.trim()
   }
 }
 
