@@ -3,7 +3,7 @@ import React from 'react'
 import BaseComponent from '../BaseComponent'
 import DocumentManager from '../../model/DocumentManager'
 import StringProcess from '../../lib/StringProcess'
-import { Double_Space_Lines, PrePost_Text, Replace_Text, Text_Change, Active_Note_Change, Reverse } from '../../Events'
+import { Double_Space_Lines, PrePost_Text, Replace_Text, Text_Change, Active_Note_Change, Reverse, Randomise_Lines } from '../../Events'
 import { Clear_Text, Welcome_Text, Markdown_Text, Todo_Template_Text, PMI_Template_Text, Smart_Template_Text, Week_Template_Text, HTML_Template_Text, Number_Lines, Change_Tabs_To_Spaces } from '../../Events'
 import { welcomeText, markdownSampler } from '../Resources/Resources'
 import { TodoTemplate, PMITemplate, SMARTTemplate, WeekPlanner, WebStarterHtml } from '../Resources/Template'
@@ -42,6 +42,7 @@ class Editor extends BaseComponent {
     this.minibus.subscribe(Change_Tabs_To_Spaces, this.tabsToSpacesHandler)
     this.minibus.subscribe(Double_Space_Lines, this.doubleSpaceLinesHandler)
     this.minibus.subscribe(Reverse, this.reverseHandler)
+    this.minibus.subscribe(Randomise_Lines, this.randomHandler)
   }
 
   render() {
@@ -111,6 +112,8 @@ class Editor extends BaseComponent {
   doubleSpaceLinesHandler = () => this.update(textProcessor.doubleSpaceLines(documents.activeNote.text))
 
   reverseHandler = () => this.update(textProcessor.reverse(documents.activeNote.text))
+
+  randomHandler = () => this.update(textProcessor.randomise(documents.activeNote.text))
 }
 
 export default Editor

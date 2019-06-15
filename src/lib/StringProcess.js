@@ -123,6 +123,22 @@ class StringProcess {
     }
     return out.trim()
   }
+
+  randomise(text) {
+    let segments = text.split(this.lineend)
+    segments = segments.sort((a, b) => {
+      let ren = Math.random()
+      if (ren === 0.5) return 0
+      return ren > 0.5 ? 1 : -1
+    })
+    let out = ''
+    for (let i = 0; i < segments.length; i++) {
+      if (segments[i].length > 0) out += segments[i]
+      if (i < (segments.length - 1))
+        out += '\n'
+    }
+    return out
+  }
 }
 
 export default StringProcess

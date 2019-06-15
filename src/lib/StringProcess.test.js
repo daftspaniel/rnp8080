@@ -84,3 +84,10 @@ it('reverse text', () => {
   expect(tp.reverse('Moo')).toEqual('ooM')
   expect(tp.reverse("Zebras are cool!\nMonkeys are okay!\nDogs are the best!\n")).toEqual('Dogs are the best!\nMonkeys are okay!\nZebras are cool!')
 })
+
+it('randomise lines', () => {
+  expect(tp.randomise('')).toEqual('')
+  expect(tp.randomise('Moo')).toEqual('Moo')
+  expect(tp.randomise("Zebras are cool!\nMonkeys are okay!\nDogs are the best!\n").split('\n').length).toEqual(4)
+  expect(tp.randomise("\n\nZebras are cool!\nMonkeys are okay!\nDogs are the best!\n").split('\n').length).toEqual(6)
+})
