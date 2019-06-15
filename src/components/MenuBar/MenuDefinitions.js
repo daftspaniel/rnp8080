@@ -1,4 +1,4 @@
-import { Double_Space_Lines, Show_PrePost_Dialog, Show_Replace_Dialog, Clear_Text, Welcome_Text, Number_Lines, Change_Tabs_To_Spaces, Reverse, Randomise_Lines } from '../../Events'
+import { Sort_Lines, Double_Space_Lines, Show_PrePost_Dialog, Show_Replace_Dialog, Clear_Text, Welcome_Text, Number_Lines, Change_Tabs_To_Spaces, Reverse, Randomise_Lines } from '../../Events'
 
 export const StartMenuItems = [
   {
@@ -96,9 +96,9 @@ export const ModifyMenuItems = [
   },
   {
     name: 'Sort A to Z',
-    info: 'Reverse the line order.',
+    info: 'Sort the contents alphabetically.',
     separator: false,
-    command: Randomise_Lines
+    command: Sort_Lines
   },
   {
     name: 'Sort by line length',
