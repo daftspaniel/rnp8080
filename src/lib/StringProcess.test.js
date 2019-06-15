@@ -3,7 +3,7 @@ import StringProcess from './StringProcess'
 let tp = new StringProcess()
 
 it('set default line eding', () => {
-  expect(tp.lineend).toEqual('\n')
+  expect(tp.lineEnding).toEqual('\n')
 })
 
 it('trims whitespace on text', () => {

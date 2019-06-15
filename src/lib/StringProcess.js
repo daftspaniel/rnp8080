@@ -1,17 +1,17 @@
 const DefaultLineEnding = '\n'
 
 class StringProcess {
-  constructor(lineEnding = DefaultLineEnding) {
-    this.lineend = lineEnding
+  constructor(alineEnding = DefaultLineEnding) {
+    this.lineEnding = alineEnding
   }
 
-  getSegments = text => text.split(this.lineend)
+  getSegments = text => text.split(this.lineEnding)
 
   trim = text => text.trim()
 
   getWordCount(text) {
     let workingText = text
-    workingText = this.replaceAll(workingText, '\n', ' ')
+    workingText = this.replaceAll(workingText, this.lineEnding, ' ')
     workingText = this.replaceAll(workingText, '.', ' ')
     workingText = this.replaceAll(workingText, ',', ' ')
     workingText = this.replaceAll(workingText, ':', ' ')
@@ -54,7 +54,7 @@ class StringProcess {
     for (let i = 0; i < segments.length; i++) {
       out += prefix + segments[i]
       if (i < (segments.length - 1)) {
-        out += '\n'
+        out += this.lineEnding
       }
     }
     return out
@@ -76,7 +76,7 @@ class StringProcess {
   addNumbering(text) {
     if (text.length === 0) return ''
 
-    var segments = this.getSegments(text)
+    const segments = this.getSegments(text)
     let out = ''
     let numberingIndex = 1;
     for (let i = 0; i < segments.length; i++) {
@@ -96,7 +96,7 @@ class StringProcess {
   }
 
   doubleSpaceLines(text) {
-    return this.replaceAll(text, '\n', '\n\n')
+    return this.replaceAll(text, this.lineEnding, this.lineEnding + this.lineEnding)
   }
 
   reverseString(text) {
@@ -107,14 +107,14 @@ class StringProcess {
   }
 
   reverse(text) {
-    const delimiter = text.includes('\n') ? '\n' : ' '
+    const delimiter = text.includes(this.lineEnding) ? this.lineEnding : ' '
     return this.reverseDelimiter(text, delimiter)
   }
 
   reverseDelimiter(text, delimiter) {
-    const segments = text.split(delimiter)
+    const segments = this.getSegments(text)
     let out = ''
-    if (!text.includes('\n'))
+    if (!text.includes(this.lineEnding))
       out = this.reverseString(text)
     else {
       segments.forEach((line) => {
@@ -125,17 +125,16 @@ class StringProcess {
   }
 
   randomise(text) {
-    let segments = text.split(this.lineend)
-    segments = segments.sort((a, b) => {
+    let out = ''
+    const segments = this.getSegments(text).sort((a, b) => {
       let ren = Math.random()
       if (ren === 0.5) return 0
       return ren > 0.5 ? 1 : -1
     })
-    let out = ''
     for (let i = 0; i < segments.length; i++) {
       if (segments[i].length > 0) out += segments[i]
       if (i < (segments.length - 1))
-        out += '\n'
+        out += this.lineEnding
     }
     return out
   }
