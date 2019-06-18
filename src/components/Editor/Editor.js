@@ -4,7 +4,6 @@ import BaseComponent from '../BaseComponent'
 import DocumentManager from '../../model/DocumentManager'
 import StringProcess from '../../lib/StringProcess'
 import { EditorEvents } from '../../Events'
-import { Clear_Text, Welcome_Text, Markdown_Text, Todo_Template_Text, PMI_Template_Text, Smart_Template_Text, Week_Template_Text, HTML_Template_Text, Number_Lines, Change_Tabs_To_Spaces } from '../../Events'
 import { welcomeText, markdownSampler } from '../Resources/Resources'
 import { TodoTemplate, PMITemplate, SMARTTemplate, WeekPlanner, WebStarterHtml } from '../Resources/Template'
 
