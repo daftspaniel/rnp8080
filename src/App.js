@@ -1,7 +1,7 @@
 import React from 'react'
 
 import BaseComponent from './components/BaseComponent'
-import { Theme_Change } from './Events'
+import { EditorEvents } from './Events'
 
 import Editor from './components/Editor/Editor'
 import TabBar from './components/TabBar/TabBar'
@@ -25,7 +25,7 @@ class App extends BaseComponent {
     this.state = { index: 1 }
     this.appManager = new AppManager()
     this.theme.setTheme(loadValue('theme', 0))
-    this.minibus.subscribe(Theme_Change, this.update)
+    this.minibus.subscribe(EditorEvents.Theme_Change, this.update)
   }
 
   update = () => this.setState({ index: this.state.index + 1 })

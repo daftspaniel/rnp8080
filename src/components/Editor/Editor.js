@@ -3,7 +3,7 @@ import React from 'react'
 import BaseComponent from '../BaseComponent'
 import DocumentManager from '../../model/DocumentManager'
 import StringProcess from '../../lib/StringProcess'
-import { Double_Space_Lines, PrePost_Text, Replace_Text, Text_Change, Active_Note_Change, Reverse, Randomise_Lines, Sort_Lines } from '../../Events'
+import { EditorEvents } from '../../Events'
 import { Clear_Text, Welcome_Text, Markdown_Text, Todo_Template_Text, PMI_Template_Text, Smart_Template_Text, Week_Template_Text, HTML_Template_Text, Number_Lines, Change_Tabs_To_Spaces } from '../../Events'
 import { welcomeText, markdownSampler } from '../Resources/Resources'
 import { TodoTemplate, PMITemplate, SMARTTemplate, WeekPlanner, WebStarterHtml } from '../Resources/Template'
@@ -17,33 +17,33 @@ const textProcessor = new StringProcess()
 class Editor extends BaseComponent {
 
   componentDidMount() {
-    this.minibus.subscribe(Active_Note_Change, this.activeNoteChangeHandler)
+    this.minibus.subscribe(EditorEvents.Active_Note_Change, this.activeNoteChangeHandler)
     this.setupMenuCommands()
 
     if (documents.activeNote)
       this.setState({ value: documents.activeNote.text })
 
-    this.minibus.post(Text_Change, () => documents.activeNote)
+    this.minibus.post(EditorEvents.Text_Change, () => documents.activeNote)
   }
 
   setupMenuCommands() {
-    this.minibus.subscribe(Clear_Text, () => this.setNote(''))
-    this.minibus.subscribe(Welcome_Text, () => this.setNote(welcomeText))
-    this.minibus.subscribe(Markdown_Text, () => this.setNote(markdownSampler))
-    this.minibus.subscribe(Todo_Template_Text, () => this.setNote(TodoTemplate))
-    this.minibus.subscribe(PMI_Template_Text, () => this.setNote(PMITemplate))
-    this.minibus.subscribe(Smart_Template_Text, () => this.setNote(SMARTTemplate))
-    this.minibus.subscribe(Week_Template_Text, () => this.setNote(WeekPlanner))
-    this.minibus.subscribe(HTML_Template_Text, () => this.setNote(WebStarterHtml))
+    this.minibus.subscribe(EditorEvents.Clear_Text, () => this.setNote(''))
+    this.minibus.subscribe(EditorEvents.Welcome_Text, () => this.setNote(welcomeText))
+    this.minibus.subscribe(EditorEvents.Markdown_Text, () => this.setNote(markdownSampler))
+    this.minibus.subscribe(EditorEvents.Todo_Template_Text, () => this.setNote(TodoTemplate))
+    this.minibus.subscribe(EditorEvents.PMI_Template_Text, () => this.setNote(PMITemplate))
+    this.minibus.subscribe(EditorEvents.Smart_Template_Text, () => this.setNote(SMARTTemplate))
+    this.minibus.subscribe(EditorEvents.Week_Template_Text, () => this.setNote(WeekPlanner))
+    this.minibus.subscribe(EditorEvents.HTML_Template_Text, () => this.setNote(WebStarterHtml))
 
-    this.minibus.subscribe(Replace_Text, this.replaceTextHandler)
-    this.minibus.subscribe(PrePost_Text, this.prePostTextHandler)
-    this.minibus.subscribe(Number_Lines, this.numberHandler)
-    this.minibus.subscribe(Change_Tabs_To_Spaces, this.tabsToSpacesHandler)
-    this.minibus.subscribe(Double_Space_Lines, this.doubleSpaceLinesHandler)
-    this.minibus.subscribe(Reverse, this.reverseHandler)
-    this.minibus.subscribe(Randomise_Lines, this.randomHandler)
-    this.minibus.subscribe(Sort_Lines, this.sortHandler)
+    this.minibus.subscribe(EditorEvents.Replace_Text, this.replaceTextHandler)
+    this.minibus.subscribe(EditorEvents.PrePost_Text, this.prePostTextHandler)
+    this.minibus.subscribe(EditorEvents.Number_Lines, this.numberHandler)
+    this.minibus.subscribe(EditorEvents.Change_Tabs_To_Spaces, this.tabsToSpacesHandler)
+    this.minibus.subscribe(EditorEvents.Double_Space_Lines, this.doubleSpaceLinesHandler)
+    this.minibus.subscribe(EditorEvents.Reverse, this.reverseHandler)
+    this.minibus.subscribe(EditorEvents.Randomise_Lines, this.randomHandler)
+    this.minibus.subscribe(EditorEvents.Sort_Lines, this.sortHandler)
   }
 
   render() {
@@ -81,7 +81,7 @@ class Editor extends BaseComponent {
 
   activeNoteChangeHandler = () => {
     this.setState({ value: documents.activeNote.text })
-    this.minibus.post(Text_Change, () => documents.activeNote)
+    this.minibus.post(EditorEvents.Text_Change, () => documents.activeNote)
   }
 
   setNote = text => this.update(text)

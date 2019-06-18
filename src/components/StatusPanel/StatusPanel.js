@@ -1,7 +1,7 @@
 import React from 'react'
 
 import BaseComponent from '../BaseComponent'
-import { Text_Change } from '../../Events'
+import { EditorEvents } from '../../Events'
 import StringProcess from '../../lib/StringProcess'
 
 import './StatusPanel.css'
@@ -9,7 +9,7 @@ import './StatusPanel.css'
 class StatusPanel extends BaseComponent {
   constructor(props) {
     super(props)
-    this.minibus.subscribe(Text_Change, this.update)
+    this.minibus.subscribe(EditorEvents.Text_Change, this.update)
     this.textProcessor = new StringProcess()
   }
 

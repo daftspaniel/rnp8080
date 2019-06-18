@@ -1,53 +1,53 @@
-import { Sort_Lines, Double_Space_Lines, Show_PrePost_Dialog, Show_Replace_Dialog, Clear_Text, Welcome_Text, Number_Lines, Change_Tabs_To_Spaces, Reverse, Randomise_Lines } from '../../Events'
+import { EditorEvents } from '../../Events'
 
 export const StartMenuItems = [
   {
     name: 'Clear text',
     info: 'Start again with an empty file.',
     separator: true,
-    command: Clear_Text,
+    command:  EditorEvents.Clear_Text,
   },
   {
     name: 'Welcome text',
     info: 'Put sample text into the file.',
     separator: false,
-    command: Welcome_Text,
+    command:  EditorEvents.Welcome_Text,
   },
   {
     name: 'Markdown',
     info: 'Put sample Markdown into the file.',
     separator: false,
-    command: 'markdown-text'
+    command:  'markdown-text'
   },
   {
     name: 'Todo Template',
     info: 'Put a Todo list template into the file.',
     separator: false,
-    command: 'todo-template-text'
+    command:  'todo-template-text'
   },
   {
     name: 'PMI Template',
     info: 'Put a PMI list template into the file.',
     separator: false,
-    command: 'pmi-template-text'
+    command:  'pmi-template-text'
   },
   {
     name: 'SMART Goal',
     info: 'Put a SMART Goal template into the file.',
     separator: true,
-    command: 'smart-template-text'
+    command:  'smart-template-text'
   },
   {
     name: 'Week Planner',
     info: 'Put a week long planning template into the file.',
     separator: false,
-    command: 'week-template-text'
+    command:  'week-template-text'
   },
   {
     name: 'HTML Starter',
     info: 'Put an HTML template into the file.',
     separator: false,
-    command: 'html-template-text'
+    command:  'html-template-text'
   },
 ]
 
@@ -56,55 +56,55 @@ export const ModifyMenuItems = [
     name: 'Replace...',
     info: 'Replace text with different text.\nCtrl + Q',
     separator: false,
-    command: Show_Replace_Dialog
+    command:  EditorEvents.Show_Replace_Dialog
   },
   {
     name: 'Pre/Post...',
     info: 'Add text to start and/or end of lines.',
     separator: true,
-    command: Show_PrePost_Dialog
+    command:  EditorEvents.Show_PrePost_Dialog
   },
   {
     name: 'Number',
     info: 'Number non-blank lines.',
     separator: false,
-    command: Number_Lines
+    command:  EditorEvents.Number_Lines
   },
   {
     name: 'Tabs to Spaces',
     info: 'Convert tab characters to spaces.',
     separator: false,
-    command: Change_Tabs_To_Spaces
+    command:  EditorEvents.Change_Tabs_To_Spaces
   },
   {
     name: 'Doublespace',
     info: 'Double space the lines.',
     separator: true,
-    command: Double_Space_Lines
+    command:  EditorEvents.Double_Space_Lines
   },
   {
     name: 'Reverse',
     info: 'Reverse the line order.',
     separator: false,
-    command: Reverse
+    command:  EditorEvents.Reverse
   },
   {
     name: 'Randomise',
     info: 'Randomise the line order.',
     separator: true,
-    command: Randomise_Lines
+    command:  EditorEvents.Randomise_Lines
   },
   {
     name: 'Sort A to Z',
     info: 'Sort the contents alphabetically.',
     separator: false,
-    command: Sort_Lines
+    command:  EditorEvents.Sort_Lines
   },
   {
     name: 'Sort by line length',
     info: 'Sort lines by length - shortest to longest.',
     separator: false,
-    command: Double_Space_Lines
+    command:  EditorEvents.Double_Space_Lines
   },
 ]
 
@@ -113,13 +113,13 @@ export const AboutMenuItems = [
     name: 'About...',
     info: 'Find out more about NP8080.',
     separator: false,
-    command: 'show-about-dialog'
+    command:  'show-about-dialog'
   },
   {
     name: 'Manual...',
     info: 'Read the NP8080 manual.',
     separator: true,
-    command: 'show-manual-dialog'
+    command:  'show-manual-dialog'
   }
 ]
 

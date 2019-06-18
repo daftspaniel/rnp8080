@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Dialog } from '../Dialog'
-import { Replace_Text, Show_Replace_Dialog } from '../../../Events'
+import { EditorEvents } from '../../../Events'
 
 import '../Dialog.css'
 import './Replace.css'
@@ -11,7 +11,7 @@ const Placeholder_Text = 'Type text here ...'
 class ReplaceDialog extends Dialog {
     constructor(props) {
         super(props)
-        this.minibus.subscribe(Show_Replace_Dialog, () => this.show())
+        this.minibus.subscribe(EditorEvents.Show_Replace_Dialog, () => this.show())
         this.state = { target: '', replacement: '' }
         this.title = 'Replace'
     }
@@ -33,7 +33,7 @@ class ReplaceDialog extends Dialog {
 
     onReplacementChange = (event) => this.setState({ replacement: event.target.value })
 
-    replaceText = () => this.minibus.post(Replace_Text, () => { return { target: this.state.target, replacement: this.state.replacement } })
+    replaceText = () => this.minibus.post(EditorEvents.Replace_Text, () => { return { target: this.state.target, replacement: this.state.replacement } })
 
     replaceDialogContent = () => (
         <div>

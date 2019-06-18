@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Dialog } from '../Dialog'
-import { Show_PrePost_Dialog, PrePost_Text } from '../../../Events'
+import { EditorEvents } from '../../../Events'
 
 import '../Dialog.css'
 import './PrePost.css'
@@ -11,7 +11,7 @@ const Placeholder_Text = 'Type text here ...'
 class PrePostDialog extends Dialog {
     constructor(props) {
         super(props)
-        this.minibus.subscribe(Show_PrePost_Dialog, () => this.show())
+        this.minibus.subscribe(EditorEvents.Show_PrePost_Dialog, () => this.show())
         this.state = { pre: '', post: '' }
         this.title = 'Prefix and Postfix Lines'
     }
@@ -23,7 +23,7 @@ class PrePostDialog extends Dialog {
             () => (
                 <div className="dialogPanel PrePostDialog" style={this.theme.getColorStyles()}>
                     {this.renderTitleBar()}
-                    {this.PrePostDialogContent()} 
+                    {this.PrePostDialogContent()}
                 </div >
             )
         )
@@ -33,7 +33,7 @@ class PrePostDialog extends Dialog {
 
     onPostChange = (event) => this.setState({ post: event.target.value })
 
-    updateText = () => this.minibus.post(PrePost_Text, () => { return { pre: this.state.pre, post: this.state.post } })
+    updateText = () => this.minibus.post(EditorEvents.PrePost_Text, () => { return { pre: this.state.pre, post: this.state.post } })
 
     PrePostDialogContent = () => (
         <div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Show_Manual_Dialog } from '../../../Events'
+import { EditorEvents } from '../../../Events'
 import { getNP8080Manual } from '../../Resources/ManualBuilder'
 
 import '../Dialog.css'
@@ -11,7 +11,7 @@ import { Dialog } from '../Dialog';
 class ManualDialog extends Dialog {
     constructor(props) {
         super(props)
-        this.minibus.subscribe(Show_Manual_Dialog, () => this.show())
+        this.minibus.subscribe(EditorEvents.Show_Manual_Dialog, () => this.show())
         this.text = getNP8080Manual()
         this.title = 'About Notepad 8080'
     }

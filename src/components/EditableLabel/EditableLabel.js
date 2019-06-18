@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Active_Note_Change } from '../../Events'
+import { EditorEvents } from '../../Events'
 import DocumentManager from '../../model/DocumentManager'
 import BaseComponent from '../BaseComponent'
 
@@ -16,7 +16,7 @@ class EditableLabel extends BaseComponent {
       editMode: false,
       text: props.note.downloadName,
     }
-    this.minibus.subscribe(Active_Note_Change, this.activeNoteChangeHandler)
+    this.minibus.subscribe(EditorEvents.Active_Note_Change, this.activeNoteChangeHandler)
   }
 
   componentDidMount = () => this.activeNoteChangeHandler()

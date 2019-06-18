@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Show_About_Dialog } from '../../../Events'
+import { EditorEvents } from '../../../Events'
 import { welcomeText } from '../../Resources/Resources'
 
 import '../Dialog.css'
@@ -11,7 +11,7 @@ import { Dialog } from '../Dialog';
 class AboutDialog extends Dialog {
     constructor(props) {
         super(props)
-        this.minibus.subscribe(Show_About_Dialog, () => this.show())
+        this.minibus.subscribe(EditorEvents.Show_About_Dialog, () => this.show())
         this.title = 'About Notepad 8080'
     }
 

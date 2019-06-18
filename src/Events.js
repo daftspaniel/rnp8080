@@ -1,26 +1,29 @@
-export const Active_Note_Change = 'active-note-change'
-export const Theme_Change = 'theme-change'
-export const Text_Change = 'text-change'
+export const EditorEvents =
+{
+    Active_Note_Change: 'active-note-change',
+    Theme_Change: 'theme-change',
+    Text_Change: 'text-change',
 
-export const Show_About_Dialog = 'show-about-dialog'
-export const Show_Manual_Dialog = 'show-manual-dialog'
-export const Show_Replace_Dialog = 'show-replace-dialog'
-export const Show_PrePost_Dialog = 'show-prepost-dialog'
+    Show_About_Dialog: 'show-about-dialog',
+    Show_Manual_Dialog: 'show-manual-dialog',
+    Show_Replace_Dialog: 'show-replace-dialog',
+    Show_PrePost_Dialog: 'show-prepost-dialog',
 
-export const Clear_Text = 'clear-text'
-export const Welcome_Text = 'welcome-text'
-export const Markdown_Text = 'markdown-text'
-export const Todo_Template_Text = 'todo-template-text'
-export const PMI_Template_Text = 'pmi-template-text'
-export const Smart_Template_Text = 'smart-template-text'
-export const Week_Template_Text = 'week-template-text'
-export const HTML_Template_Text = 'html-template-text'
+    Clear_Text: 'clear-text',
+    Welcome_Text: 'welcome-text',
+    Markdown_Text: 'markdown-text',
+    Todo_Template_Text: 'todo-template-text',
+    PMI_Template_Text: 'pmi-template-text',
+    Smart_Template_Text: 'smart-template-text',
+    Week_Template_Text: 'week-template-text',
+    HTML_Template_Text: 'html-template-text',
 
-export const Replace_Text = 'replace-text'
-export const PrePost_Text = 'prepost-text'
-export const Number_Lines = 'number-lines'
-export const Change_Tabs_To_Spaces = 'change-tabs-to-spaces'
-export const Double_Space_Lines = 'double-space-lines'
-export const Reverse= 'reverse'
-export const Randomise_Lines = 'randomise-lines'
-export const Sort_Lines = 'sort-lines'
+    Replace_Text: 'replace-text',
+    PrePost_Text: 'prepost-text',
+    Number_Lines: 'number-lines',
+    Change_Tabs_To_Spaces: 'change-tabs-to-spaces',
+    Double_Space_Lines: 'double-space-lines',
+    Reverse: 'reverse',
+    Randomise_Lines: 'randomise-lines',
+    Sort_Lines: 'sort-lines'
+}
