@@ -43,6 +43,8 @@ class Editor extends BaseComponent {
     this.minibus.subscribe(EditorEvents.Reverse, this.reverseHandler)
     this.minibus.subscribe(EditorEvents.Randomise_Lines, this.randomHandler)
     this.minibus.subscribe(EditorEvents.Sort_Lines, this.sortHandler)
+
+    this.minibus.subscribe(EditorEvents.Add_Lorem_Ipsum, this.loremIpsumHandler)
   }
 
   render() {
@@ -116,6 +118,8 @@ class Editor extends BaseComponent {
   randomHandler = () => this.update(textProcessor.randomise(documents.activeNote.text))
 
   sortHandler = () => this.update(textProcessor.sort(documents.activeNote.text))
+
+  loremIpsumHandler = () => {console.log('LOREM')}
 }
 
 export default Editor

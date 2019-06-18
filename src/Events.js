@@ -25,5 +25,7 @@ export const EditorEvents =
     Double_Space_Lines: 'double-space-lines',
     Reverse: 'reverse',
     Randomise_Lines: 'randomise-lines',
-    Sort_Lines: 'sort-lines'
+    Sort_Lines: 'sort-lines',
+
+    Add_Lorem_Ipsum: 'add-lorem-ipsum', 
 }

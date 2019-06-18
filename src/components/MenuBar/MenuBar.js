@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Menu from '../Menu/Menu'
-import { StartMenuItems, ModifyMenuItems, AboutMenuItems } from './MenuDefinitions'
+import { StartMenuItems, ModifyMenuItems, AboutMenuItems, AddMenuItems } from './MenuDefinitions'
 import Basecomponent from '../BaseComponent'
 import DocumentManager from '../../model/DocumentManager'
 
@@ -15,7 +15,7 @@ class MenuBar extends Basecomponent {
       <div className="MenuBarContainer">
         <Menu name="Start" items={StartMenuItems} />
         <Menu name="Modify" items={ModifyMenuItems} />
-        <Menu name="Add" />
+        <Menu name="Add" items={AddMenuItems} />
         <Menu name="Remove" />
         <Menu name="Advanced" />
         <Menu name="View" />

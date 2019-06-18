@@ -108,6 +108,21 @@ export const ModifyMenuItems = [
   },
 ]
 
+
+export const AddMenuItems = [
+  {
+    name: 'Lorem Ipsum',
+    info: 'Add Lorem Ipsum text.',
+    separator: true,
+    command:  EditorEvents.Add_Lorem_Ipsum
+  },  {
+    name: 'Lorem Ipsum',
+    info: 'Add Lorem Ipsum text.',
+    separator: true,
+    command:  EditorEvents.Double_Space_Lines
+  },
+]
+
 export const AboutMenuItems = [
   {
     name: 'About...',
@@ -123,4 +138,4 @@ export const AboutMenuItems = [
   }
 ]
 
-export const AllMenus = [StartMenuItems, ModifyMenuItems, AboutMenuItems] 
+export const AllMenus = [StartMenuItems, ModifyMenuItems, AddMenuItems, AboutMenuItems] 
