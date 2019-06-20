@@ -4,7 +4,7 @@ import BaseComponent from '../BaseComponent'
 import DocumentManager from '../../model/DocumentManager'
 import StringProcess from '../../lib/StringProcess'
 import { EditorEvents } from '../../Events'
-import { welcomeText, markdownSampler } from '../Resources/Resources'
+import { welcomeText, markdownSampler, loremIpsum } from '../Resources/Resources'
 import { TodoTemplate, PMITemplate, SMARTTemplate, WeekPlanner, WebStarterHtml } from '../Resources/Template'
 
 
@@ -14,6 +14,11 @@ const documents = DocumentManager.getInstance()
 const textProcessor = new StringProcess()
 
 class Editor extends BaseComponent {
+
+  constructor(props) {
+    super(props)
+    this.editorRef = React.createRef()
+  }
 
   componentDidMount() {
     this.minibus.subscribe(EditorEvents.Active_Note_Change, this.activeNoteChangeHandler)
@@ -57,6 +62,7 @@ class Editor extends BaseComponent {
           value={this.state.value}
           autoFocus={true}
           style={this.theme.getDocumentStyles()}
+          ref={this.editorRef}
         />
       </div>
     )
@@ -119,7 +125,21 @@ class Editor extends BaseComponent {
 
   sortHandler = () => this.update(textProcessor.sort(documents.activeNote.text))
 
-  loremIpsumHandler = () => {console.log('LOREM')}
+  loremIpsumHandler = () => {
+    console.log('LOREM')
+    const ta = this.editorRef.current
+    const text = documents.activeNote.text
+    var newText = text.substring(0, ta.selectionStart) +
+      loremIpsum +
+      '\n\n' +
+      text.substring(ta.selectionStart)
+    this.update(newText)
+    console.log(ta.selectionStart)
+    setTimeout(() => {
+      ta.setSelectionRange(ta.selectionStart, ta.selectionStart)
+      ta.focus()
+    }, 300)
+  }
 }
 
 export default Editor
