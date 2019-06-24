@@ -99,6 +99,7 @@ class Editor extends BaseComponent {
   update(text) {
     documents.activeNote.setText(text)
     this.activeNoteChangeHandler()
+    this.setEditorFocus()
   }
 
   getTextAreaRef = () => this.editorRef.current
@@ -144,7 +145,6 @@ class Editor extends BaseComponent {
       '\n\n' +
       text.substring(ta.selectionStart)
     this.update(newText)
-    this.setEditorFocus()
   }
 
   duplicateAllHandler = () => this.update(documents.activeNote.text + `\n` + documents.activeNote.text)
