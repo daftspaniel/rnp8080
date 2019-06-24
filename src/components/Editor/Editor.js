@@ -50,6 +50,7 @@ class Editor extends BaseComponent {
     this.minibus.subscribe(EditorEvents.Sort_Lines, this.sortHandler)
 
     this.minibus.subscribe(EditorEvents.Add_Lorem_Ipsum, this.loremIpsumHandler)
+    this.minibus.subscribe(EditorEvents.Duplicate_All, this.duplicateAllHandler)
   }
 
   render() {
@@ -100,6 +101,16 @@ class Editor extends BaseComponent {
     this.activeNoteChangeHandler()
   }
 
+  getTextAreaRef = () => this.editorRef.current
+
+  setEditorFocus = () => {
+    setTimeout(() => {
+      const textArea = this.getTextAreaRef()
+      textArea.setSelectionRange(textArea.selectionStart, textArea.selectionStart)
+      textArea.focus()
+    }, 300)
+  }
+
   replaceTextHandler = (replacement) => {
     let data = replacement()
     let updatedText = textProcessor.replaceAll(documents.activeNote.text, data.target, data.replacement)
@@ -126,20 +137,17 @@ class Editor extends BaseComponent {
   sortHandler = () => this.update(textProcessor.sort(documents.activeNote.text))
 
   loremIpsumHandler = () => {
-    console.log('LOREM')
-    const ta = this.editorRef.current
+    const ta = this.getTextAreaRef()
     const text = documents.activeNote.text
     var newText = text.substring(0, ta.selectionStart) +
       loremIpsum +
       '\n\n' +
       text.substring(ta.selectionStart)
     this.update(newText)
-    console.log(ta.selectionStart)
-    setTimeout(() => {
-      ta.setSelectionRange(ta.selectionStart, ta.selectionStart)
-      ta.focus()
-    }, 300)
+    this.setEditorFocus()
   }
+
+  duplicateAllHandler = () => this.update(documents.activeNote.text + `\n` + documents.activeNote.text)
 }
 
 export default Editor

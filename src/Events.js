@@ -28,4 +28,5 @@ export const EditorEvents =
     Sort_Lines: 'sort-lines',
 
     Add_Lorem_Ipsum: 'add-lorem-ipsum', 
+    Duplicate_All: 'duplicate-all', 
 }

@@ -116,10 +116,10 @@ export const AddMenuItems = [
     separator: true,
     command:  EditorEvents.Add_Lorem_Ipsum
   },  {
-    name: 'Lorem Ipsum',
-    info: 'Add Lorem Ipsum text.',
+    name: 'Duplicate All',
+    info: 'Append a copy of the entire text to itself.',
     separator: true,
-    command:  EditorEvents.Double_Space_Lines
+    command:  EditorEvents.Duplicate_All
   },
 ]
 
