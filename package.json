@@ -1,14 +1,17 @@
 {
   "name": "rnp8080",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": true,
   "dependencies": {
     "eslint-config-react-app": "^4.0.1",
-    "npm-check-updates": "^3.1.10",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-draggable": "^3.3.0",
-    "react-scripts": "3.0.1",
+    "react-scripts": "3.0.1"
+  },
+  "devDependencies": {
+    "cypress": "^3.3.2",
+    "npm-check-updates": "^3.1.10",
     "yarn": "^1.15.2"
   },
   "homepage": ".",
@@ -16,7 +19,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "co": "./node_modules/cypress/bin/cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
