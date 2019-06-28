@@ -4,6 +4,11 @@ node_js:
 cache:
   directories:
   - node_modules
+  - ~/.npm
+  - ~/.cache
+  override:
+    - npm ci
+    - npm run cy:verify
 script:
   - npm install
   - npm test
