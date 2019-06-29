@@ -20,7 +20,7 @@ script:
   - npm install
   - npm test
   - npm run build
-  - npm run cy:run -- --record
+  - npm run cy:run -- 
 defaults: &defaults
   script:
     #   ## print all Travis environment variables for debugging
