@@ -21,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cy:run": "cypress run",
-    "start:ci": "serve --no-clipboard --listen ${PORT:-8080}",
+    "start:ci": "serve --no-clipboard --listen ${PORT:-8080}"
   },
   "eslintConfig": {
     "extends": "react-app"
