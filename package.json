@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cy:run": "cypress run",
-    "start:ci": "serve --no-clipboard --listen ${PORT:-3001}"
+    "start:ci": "react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
