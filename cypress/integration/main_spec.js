@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 describe('Basic Text Entry Test', function() {
   before(() => {
-    cy.visit('http://localhost:3001/')
+    cy.visit('http://localhost:3000/')
     cy.get('.Editor').type('{selectall}Hello world!')
   })
 
