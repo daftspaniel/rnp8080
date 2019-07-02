@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cy:run": "cypress run",
-    "start:ci": "react-scripts start"
+    "start:ci": "cd build;npm start &"
   },
   "eslintConfig": {
     "extends": "react-app"
