@@ -104,7 +104,7 @@ export const ModifyMenuItems = [
     name: 'Sort by line length',
     info: 'Sort lines by length - shortest to longest.',
     separator: false,
-    command:  EditorEvents.Double_Space_Lines
+    command:  EditorEvents.Sort_Lines_By_Length
   },
 ]
 

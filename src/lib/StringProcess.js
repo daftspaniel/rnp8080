@@ -167,10 +167,10 @@ class StringProcess {
   sortByLength(text) {
     let out = ''
     const segments = this.getSegments(text)
-    segments.sort((a, b) => a.length > b.length)
+    segments.sort((a, b) => a.length - b.length)
+
     for (let i = 0; i < segments.length; i++)
       out += segments[i] + this.lineEnding
-    
     return out + this.lineEnding
   }
 }

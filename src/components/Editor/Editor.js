@@ -48,6 +48,7 @@ class Editor extends BaseComponent {
     this.minibus.subscribe(EditorEvents.Reverse, this.reverseHandler)
     this.minibus.subscribe(EditorEvents.Randomise_Lines, this.randomHandler)
     this.minibus.subscribe(EditorEvents.Sort_Lines, this.sortHandler)
+    this.minibus.subscribe(EditorEvents.Sort_Lines_By_Length, this.sortLengthHandler)
 
     this.minibus.subscribe(EditorEvents.Add_Lorem_Ipsum, this.loremIpsumHandler)
     this.minibus.subscribe(EditorEvents.Duplicate_All, this.duplicateAllHandler)
@@ -136,6 +137,8 @@ class Editor extends BaseComponent {
   randomHandler = () => this.update(textProcessor.randomise(documents.activeNote.text))
 
   sortHandler = () => this.update(textProcessor.sort(documents.activeNote.text))
+  
+  sortLengthHandler = () => this.update(textProcessor.sortByLength(documents.activeNote.text))
 
   loremIpsumHandler = () => {
     const ta = this.getTextAreaRef()

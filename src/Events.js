@@ -26,6 +26,7 @@ export const EditorEvents =
     Reverse: 'reverse',
     Randomise_Lines: 'randomise-lines',
     Sort_Lines: 'sort-lines',
+    Sort_Lines_By_Length: 'sort-lines-by-length',
 
     Add_Lorem_Ipsum: 'add-lorem-ipsum', 
     Duplicate_All: 'duplicate-all', 
