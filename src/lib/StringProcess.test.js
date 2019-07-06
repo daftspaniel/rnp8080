@@ -93,10 +93,15 @@ it('Randomise lines', () => {
   expect(tp.randomise("\n\nZebras are cool!\nMonkeys are okay!\nDogs are the best!\n").split('\n').length).toEqual(6)
 })
 
-it('Sort alpha - single line',()=>{
-  expect(tp.sort('Dogs are the best!')).toEqual('Dogs are best! the') 
+it('Sort alpha - single line', () => {
+  expect(tp.sort('Dogs are the best!')).toEqual('Dogs are best! the')
 })
 
-it('Sort alpha - multi line',()=>{
-  expect(tp.sort("Zebras are cool!\nMonkeys are okay!\nDogs are the best!")).toEqual("Dogs are the best!\nMonkeys are okay!\nZebras are cool!") 
+it('Sort alpha - multi line', () => {
+  expect(tp.sort("Zebras are cool!\nMonkeys are okay!\nDogs are the best!")).toEqual("Dogs are the best!\nMonkeys are okay!\nZebras are cool!")
+})
+
+it('Sort line length', () => {
+  expect(tp.sort("bb\nddddd\na\n")).toEqual("a\nbb\nddddd")
+  expect(tp.sort("bb\nA\n").length).toEqual(4)
 })
