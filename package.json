@@ -7,13 +7,10 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-draggable": "^3.3.0",
-    "react-scripts": "3.0.1",
-    "serve": "11.0.1"
+    "react-scripts": "3.0.1"
   },
   "devDependencies": {
-    "cypress": "^3.3.2",
-    "npm-check-updates": "^3.1.10",
-    "yarn": "^1.15.2"
+    "cypress": "^3.4.0"
   },
   "homepage": ".",
   "scripts": {
