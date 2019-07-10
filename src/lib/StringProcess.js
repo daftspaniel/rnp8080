@@ -173,6 +173,18 @@ class StringProcess {
       out += segments[i] + this.lineEnding
     return out + this.lineEnding
   }
+
+  /// Duplicate Lines
+  duplicateLines(text) {
+    let out = ''
+    const segments = this.getSegments(text)
+    for (let i = 0; i < segments.length; i++) {
+      out += segments[i] + segments[i]
+      if (i < (segments.length - 1))
+        out += this.lineEnding
+    }
+    return out
+  }
 }
 
 export default StringProcess

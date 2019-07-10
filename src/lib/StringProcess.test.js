@@ -105,3 +105,10 @@ it('Sort line length', () => {
   expect(tp.sort("bb\nddddd\na\n")).toEqual("a\nbb\nddddd")
   expect(tp.sort("bb\nA\n").length).toEqual(4)
 })
+
+it('Duplicate Lines', () => {
+  expect(tp.duplicateLines("")).toEqual("")
+  expect(tp.duplicateLines("hello")).toEqual("hellohello")
+  expect(tp.duplicateLines("hello\n")).toEqual("hellohello\n")
+  expect(tp.duplicateLines("hello\nthere\nare\napples\nin\nhere.")).toEqual("hellohello\ntherethere\nareare\napplesapples\ninin\nhere.here.")
+})
