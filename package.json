@@ -10,7 +10,7 @@
     "react-scripts": "3.0.1"
   },
   "devDependencies": {
-    "cypress": "^3.4.0"
+    "cypress": "^3.4.1"
   },
   "homepage": ".",
   "scripts": {
