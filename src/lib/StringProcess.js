@@ -188,24 +188,20 @@ class StringProcess {
 
   /// Returns a string with the line that incorporates the index at position duplicated.
   duplicateLine(text, position) {
-    let out = ''
     let start = Math.max(text.lastIndexOf(this.lineEnding, position), 0)
     const end = text.indexOf(this.lineEnding, position)
+    const after = text.substring(end)
 
     if (start === end && position > 0)
       start = Math.max(text.lastIndexOf(this.lineEnding, position - 1), 0)
 
-    if (start + 1 < end) {
-      let dupe = text.substring(start === 0 ? 0 : start + 1, end);
-      out = text.substring(0, start) +
-        (start === 0 ? '' : this.lineEnding) +
-        dupe +
-        this.lineEnding +
-        dupe +
-        text.substring(end)
-    }
-    else out = text
-    return out
+    if (start + 1 > end) return text
+
+    const dupe = text.substring(start === 0 ? 0 : start + 1, end)
+    const before = text.substring(0, start) + (start === 0 ? '' : this.lineEnding)
+
+    return `${before}${dupe}${this.lineEnding}${dupe}${after}`
+
   }
 }
 
