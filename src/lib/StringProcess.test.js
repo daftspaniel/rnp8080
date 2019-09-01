@@ -112,3 +112,13 @@ it('Duplicate Lines', () => {
   expect(tp.duplicateLines("hello\n")).toEqual("hellohello\n")
   expect(tp.duplicateLines("hello\nthere\nare\napples\nin\nhere.")).toEqual("hellohello\ntherethere\nareare\napplesapples\ninin\nhere.here.")
 })
+
+it('Duplicate Current Line', () => {
+  expect(tp.duplicateLine("hello\nworld\n", 3)).toEqual("hello\nhello\nworld\n")
+  expect(tp.duplicateLine('This is and intro\ntrouble\nclosing words', 20)).toEqual("This is and intro\ntrouble\ntrouble\nclosing words")
+  expect(tp.duplicateLine("mouse\n", 0)).toEqual("mouse\nmouse\n")
+  expect(tp.duplicateLine("mouse\n", 3)).toEqual("mouse\nmouse\n")
+  expect(tp.duplicateLine("mouse\n", 4)).toEqual("mouse\nmouse\n")
+  expect(tp.duplicateLine("mouse\n", 5)).toEqual("mouse\nmouse\n")
+  expect(tp.duplicateLine("\nmouse", 0)).toEqual("\nmouse")
+})
