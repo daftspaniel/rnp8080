@@ -53,6 +53,7 @@ class Editor extends BaseComponent {
     this.minibus.subscribe(EditorEvents.Add_Lorem_Ipsum, this.loremIpsumHandler)
     this.minibus.subscribe(EditorEvents.Duplicate_All, this.duplicateAllHandler)
     this.minibus.subscribe(EditorEvents.Duplicate_Lines, this.duplicateLinesHandler)
+    this.minibus.subscribe(EditorEvents.Duplicate_Line, this.duplicateLineHandler)
   }
 
   render() {
@@ -138,7 +139,7 @@ class Editor extends BaseComponent {
   randomHandler = () => this.update(textProcessor.randomise(documents.activeNote.text))
 
   sortHandler = () => this.update(textProcessor.sort(documents.activeNote.text))
-  
+
   sortLengthHandler = () => this.update(textProcessor.sortByLength(documents.activeNote.text))
 
   loremIpsumHandler = () => {
@@ -154,6 +155,11 @@ class Editor extends BaseComponent {
   duplicateAllHandler = () => this.update(documents.activeNote.text + `\n` + documents.activeNote.text)
 
   duplicateLinesHandler = () => this.update(textProcessor.duplicateLines(documents.activeNote.text))
+
+  duplicateLineHandler = () => {
+    const ta = this.getTextAreaRef()
+    this.update(textProcessor.duplicateLine(documents.activeNote.text, ta.selectionStart))
+  }
 }
 
 export default Editor

@@ -203,6 +203,13 @@ class StringProcess {
     return `${before}${dupe}${this.lineEnding}${dupe}${after}`
 
   }
+
+  /// Return string of supplied text repeated count times.
+  generateRepeatedString(textToRepeat, count = 1, newLine = false) {
+    return newLine
+      ? (textToRepeat + this.lineEnding).repeat(count)
+      : textToRepeat.repeat(count)
+  }
 }
 
 export default StringProcess

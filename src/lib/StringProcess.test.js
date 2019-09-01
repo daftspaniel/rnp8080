@@ -122,3 +122,15 @@ it('Duplicate Current Line', () => {
   expect(tp.duplicateLine("mouse\n", 5)).toEqual("mouse\nmouse\n")
   expect(tp.duplicateLine("\nmouse", 0)).toEqual("\nmouse")
 })
+
+it('Generate repeated string', () => {
+  expect(tp.generateRepeatedString("Moo")).toEqual("Moo")
+  expect(tp.generateRepeatedString("Moo",0)).toEqual("")
+  expect(tp.generateRepeatedString("Moo", 4)).toEqual("MooMooMooMoo")
+})
+
+it('Generate repeated string with newline', () => {
+  expect(tp.generateRepeatedString("Moo", 1, true)).toEqual("Moo\n")
+  expect(tp.generateRepeatedString("Moo",0,true)).toEqual("")
+  expect(tp.generateRepeatedString("Moo", 4,true)).toEqual("Moo\nMoo\nMoo\nMoo\n")
+})
