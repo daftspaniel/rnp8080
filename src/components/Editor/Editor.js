@@ -52,6 +52,7 @@ class Editor extends BaseComponent {
 
     this.minibus.subscribe(EditorEvents.Add_Lorem_Ipsum, this.loremIpsumHandler)
     this.minibus.subscribe(EditorEvents.Duplicate_All, this.duplicateAllHandler)
+    this.minibus.subscribe(EditorEvents.Duplicate_Lines, this.duplicateLinesHandler)
   }
 
   render() {
@@ -151,6 +152,8 @@ class Editor extends BaseComponent {
   }
 
   duplicateAllHandler = () => this.update(documents.activeNote.text + `\n` + documents.activeNote.text)
+
+  duplicateLinesHandler = () => this.update(textProcessor.duplicateLines(documents.activeNote.text))
 }
 
 export default Editor

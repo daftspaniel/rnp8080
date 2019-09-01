@@ -30,4 +30,5 @@ export const EditorEvents =
 
     Add_Lorem_Ipsum: 'add-lorem-ipsum', 
     Duplicate_All: 'duplicate-all', 
+    Duplicate_Lines: 'duplicate-lines', 
 }

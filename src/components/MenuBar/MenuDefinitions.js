@@ -120,6 +120,11 @@ export const AddMenuItems = [
     info: 'Append a copy of the entire text to itself.',
     separator: true,
     command:  EditorEvents.Duplicate_All
+  },{
+    name: 'Duplicate Lines',
+    info: 'Add a copy of each line to itself.',
+    separator: true,
+    command:  EditorEvents.Duplicate_Lines
   },
 ]
 
