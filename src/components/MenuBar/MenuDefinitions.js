@@ -130,8 +130,13 @@ export const AddMenuItems = [
     info: 'Duplicate the currently selected line.',
     separator: true,
     command: EditorEvents.Duplicate_Line
+  },{
+    name: 'Generate Text...',
+    info: 'Add generated text into text.',
+    separator: false,
+    command: EditorEvents.Show_Generate_Dialog
   },
-]
+]        
 
 export const AboutMenuItems = [
   {

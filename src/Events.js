@@ -8,6 +8,7 @@ export const EditorEvents =
     Show_Manual_Dialog: 'show-manual-dialog',
     Show_Replace_Dialog: 'show-replace-dialog',
     Show_PrePost_Dialog: 'show-prepost-dialog',
+    Show_Generate_Dialog: 'show-generate-dialog',
 
     Clear_Text: 'clear-text',
     Welcome_Text: 'welcome-text',

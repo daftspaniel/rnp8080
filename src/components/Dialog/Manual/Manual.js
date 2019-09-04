@@ -6,7 +6,7 @@ import { getNP8080Manual } from '../../Resources/ManualBuilder'
 import '../Dialog.css'
 import './Manual.css'
 
-import { Dialog } from '../Dialog';
+import { Dialog } from '../Dialog'
 
 class ManualDialog extends Dialog {
     constructor(props) {
