@@ -1,2 +1,17 @@
 .GenerateDialog {
+    margin: 10px;
+}
+
+.previewText {
+  height: 100px;
+  width: 70%;
+  background-color: cornsilk;
+}
+
+.repeatCount {
+  margin-left: 10px;
+}
+
+.repeatLabel {
+  margin-right: 10px;
 }
