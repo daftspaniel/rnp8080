@@ -20,7 +20,7 @@ class AboutDialog extends Dialog {
         return (
             <div className="dialogPanel AboutDialog" style={this.theme.getColorStyles()}>
                 {this.renderTitleBar()}
-                <textarea readOnly cols="85" className="textBox" defaultValue={welcomeText}></textarea>
+                <textarea readonly cols="85" className="textBox" defaultValue={welcomeText}></textarea>
                 <br />
                 <button onClick={this.close}>Close</button>
             </div >

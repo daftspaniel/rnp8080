@@ -1,17 +1,35 @@
 import React from 'react'
 
+import { Dialog } from '../Dialog'
+import StringProcess from '../../../lib/StringProcess'
 import { EditorEvents } from '../../../Events'
 
 import '../Dialog.css'
 import './Generate.css'
 
-import { Dialog } from '../Dialog'
+const textProcessor = new StringProcess()
 
 class GenerateDialog extends Dialog {
   constructor(props) {
     super(props)
     this.minibus.subscribe(EditorEvents.Show_Generate_Dialog, () => this.show())
     this.title = 'Generate'
+    this.state = { text: '', repeat: 1, preview: '' }
+  }
+
+  onTextChange = (event) => {
+    this.setState({ text: event.target.value })
+    this.updatePreview(event.target.value, this.state.repeat)
+  }
+
+  onNumberChange = (event) => {
+    this.setState({ repeat: event.target.value })
+    this.updatePreview(this.state.text, event.target.value)
+  }
+
+  updatePreview(text, number) {
+    let newPreviewText = textProcessor.generateRepeatedString(text, number)
+    this.setState({ preview: newPreviewText })
   }
 
   render() {
@@ -24,28 +42,31 @@ class GenerateDialog extends Dialog {
       >
         {this.renderTitleBar()}
         <br />
-        <label class="repeatLabel">Repeat</label>
+        <label className="repeatLabel">Repeat</label>
         <input
-          class="repeat"
+          className="repeat"
           type="text"
           placeholder="Type text here..."
           id="repeatTextbox"
+          value={this.state.text}
+          onChange={this.onTextChange}
         />
-        <input class="repeatCount" type="number" min="1" /> Times
+        <input className="repeatCount" type="number" min="1" value={this.state.repeat} onChange={this.onNumberChange} /> Times
         <br />
         <br />
         <input type="checkbox" /> Add a newline after each item
         <br />
         <br />
         <textarea
-          class="previewText"
-          readonly
+          className="previewText"
+          readOnly
           placeholder="Preview will appear here"
+          value={this.state.preview}
         ></textarea>
         <br />
-        <button class="actionButton">Prepend</button>
-        <button class="actionButton">Insert</button>
-        <button class="actionButton">Append</button>
+        <button className="actionButton">Prepend</button>
+        <button className="actionButton">Insert</button>
+        <button className="actionButton">Append</button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button onClick={this.close}>Close</button>
       </div>
