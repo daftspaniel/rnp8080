@@ -54,6 +54,10 @@ class Editor extends BaseComponent {
     this.minibus.subscribe(EditorEvents.Duplicate_All, this.duplicateAllHandler)
     this.minibus.subscribe(EditorEvents.Duplicate_Lines, this.duplicateLinesHandler)
     this.minibus.subscribe(EditorEvents.Duplicate_Line, this.duplicateLineHandler)
+
+    this.minibus.subscribe(EditorEvents.Append_Text, this.appendTextHandler)
+    this.minibus.subscribe(EditorEvents.Prepend_Text, this.prependTextHandler)
+    this.minibus.subscribe(EditorEvents.Insert_Text, this.insertTextHandler)
   }
 
   render() {
@@ -103,6 +107,22 @@ class Editor extends BaseComponent {
     documents.activeNote.setText(text)
     this.activeNoteChangeHandler()
     this.setEditorFocus()
+  }
+
+  prepend(text) { }
+
+  insert(text) { }
+
+  appendTextHandler = (textToAppend) => {
+    this.update(documents.activeNote.text + textToAppend)
+  }
+
+  prependTextHandler = (textToPrepend) => {
+    this.update(textToPrepend + documents.activeNote.text)
+  }
+
+  insertTextHandler = (textToInsert) => {
+    this.update(documents.activeNote.text + textToInsert)
   }
 
   getTextAreaRef = () => this.editorRef.current

@@ -14,7 +14,7 @@ class GenerateDialog extends Dialog {
     super(props)
     this.minibus.subscribe(EditorEvents.Show_Generate_Dialog, () => this.show())
     this.title = 'Generate'
-    this.state = { text: '', repeat: 1, preview: '' }
+    this.state = { text: '', repeat: 1, generatedText: '' }
   }
 
   onTextChange = (event) => {
@@ -27,9 +27,24 @@ class GenerateDialog extends Dialog {
     this.updatePreview(this.state.text, event.target.value)
   }
 
+  prepend = () => {
+    this.minibus.post(EditorEvents.Insert_Text, this.state.generatedText)
+    this.close()
+  }
+
+  prepend = () => {
+    this.minibus.post(EditorEvents.Prepend_Text, this.state.generatedText)
+    this.close()
+  }
+
+  append = () => {
+    this.minibus.post(EditorEvents.Append_Text, this.state.generatedText)
+    this.close()
+  }
+
   updatePreview(text, number) {
     let newPreviewText = textProcessor.generateRepeatedString(text, number)
-    this.setState({ preview: newPreviewText })
+    this.setState({ generatedText: newPreviewText })
   }
 
   render() {
@@ -61,12 +76,12 @@ class GenerateDialog extends Dialog {
           className="previewText"
           readOnly
           placeholder="Preview will appear here"
-          value={this.state.preview}
+          value={this.state.generatedText}
         ></textarea>
         <br />
-        <button className="actionButton">Prepend</button>
-        <button className="actionButton">Insert</button>
-        <button className="actionButton">Append</button>
+        <button className="actionButton" onClick={this.prepend}>Prepend</button>
+        <button className="actionButton" onClick={this.insert}>Insert</button>
+        <button className="actionButton" onClick={this.append}>Append</button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button onClick={this.close}>Close</button>
       </div>
