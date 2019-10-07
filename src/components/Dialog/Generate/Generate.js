@@ -27,7 +27,7 @@ class GenerateDialog extends Dialog {
     this.updatePreview(this.state.text, event.target.value)
   }
 
-  prepend = () => {
+  insert = () => {
     this.minibus.post(EditorEvents.Insert_Text, this.state.generatedText)
     this.close()
   }

@@ -103,36 +103,38 @@ class Editor extends BaseComponent {
 
   handleChange = event => this.update(event.target.value)
 
-  update(text) {
+  update(text, position = -1) {
     documents.activeNote.setText(text)
     this.activeNoteChangeHandler()
-    this.setEditorFocus()
+    this.setEditorFocus(position)
   }
 
-  prepend(text) { }
-
-  insert(text) { }
-
-  appendTextHandler = (textToAppend) => {
+  appendTextHandler = (textToAppend) =>
     this.update(documents.activeNote.text + textToAppend)
-  }
 
-  prependTextHandler = (textToPrepend) => {
+  prependTextHandler = (textToPrepend) =>
     this.update(textToPrepend + documents.activeNote.text)
-  }
 
   insertTextHandler = (textToInsert) => {
-    this.update(documents.activeNote.text + textToInsert)
+    const cursorPostion = this.getCurrentSelection().start
+    const { activeNote } = documents
+
+    const newText = activeNote.text.substring(0, cursorPostion) +
+      textToInsert +
+      activeNote.text.substring(cursorPostion);
+
+    this.update(newText, cursorPostion)
   }
 
   getTextAreaRef = () => this.editorRef.current
 
-  setEditorFocus = () => {
+  setEditorFocus = (position = -1) => {
+    const textArea = this.getTextAreaRef()
     setTimeout(() => {
-      const textArea = this.getTextAreaRef()
-      textArea.setSelectionRange(textArea.selectionStart, textArea.selectionStart)
+      if (position < 0) position = textArea.selectionStart
+      textArea.setSelectionRange(position, position)
       textArea.focus()
-    }, 300)
+    }, 200)
   }
 
   replaceTextHandler = (replacement) => {
@@ -179,6 +181,15 @@ class Editor extends BaseComponent {
   duplicateLineHandler = () => {
     const ta = this.getTextAreaRef()
     this.update(textProcessor.duplicateLine(documents.activeNote.text, ta.selectionStart))
+  }
+
+  getCurrentSelection() {
+    const ta = this.getTextAreaRef()
+    const sel = {}
+    sel.start = ta.selectionStart
+    sel.end = ta.selectionEnd
+    sel.text = ta.value.substring(sel.start, sel.end)
+    return sel
   }
 }
 
