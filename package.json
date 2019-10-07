@@ -4,10 +4,10 @@
   "private": true,
   "dependencies": {
     "eslint-config-react-app": "^5.0.2",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
     "react-draggable": "^4.0.3",
-    "react-scripts": "^3.1.2"
+    "react-scripts": "^3.2.0"
   },
   "devDependencies": {
     "cypress": "^3.4.1"
