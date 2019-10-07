@@ -135,6 +135,11 @@ export const AddMenuItems = [
     info: 'Add generated text into text.',
     separator: false,
     command: EditorEvents.Show_Generate_Dialog
+  },{
+    name: 'Num Seq...',
+    info: 'Add generated number sequence to text..',
+    separator: false,
+    command: EditorEvents.Show_Number_Sequence_Dialog
   },
 ]        
 

@@ -13,6 +13,7 @@ import ManualDialog from './components/Dialog/Manual/Manual'
 import ReplaceDialog from './components/Dialog/Replace/Replace'
 import PrePostDialog from './components/Dialog/PrePost/PrePost'
 import GenerateDialog from './components/Dialog/Generate/Generate'
+import NumberSequenceDialog from './components/Dialog/NumberSequence/NumberSequence'
 
 import AppManager from './model/AppManager'
 import { loadValue } from './lib/Storage'
@@ -39,6 +40,7 @@ class App extends BaseComponent {
         <ReplaceDialog />
         <PrePostDialog />
         <GenerateDialog />
+        <NumberSequenceDialog />
         <MenuBar />
         <TabBar />
         <Editor />

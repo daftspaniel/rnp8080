@@ -9,6 +9,7 @@ export const EditorEvents =
     Show_Replace_Dialog: 'show-replace-dialog',
     Show_PrePost_Dialog: 'show-prepost-dialog',
     Show_Generate_Dialog: 'show-generate-dialog',
+    Show_Number_Sequence_Dialog: 'show-number-sequence-dialog',
 
     Clear_Text: 'clear-text',
     Welcome_Text: 'welcome-text',

@@ -210,6 +210,17 @@ class StringProcess {
       ? (textToRepeat + this.lineEnding).repeat(count)
       : textToRepeat.repeat(count)
   }
+
+   ///Returns string of a sequence of numbers each on a new line.
+  generateSequenceString(startIndex, repeatCount, increment) {
+    let out = ''
+    let current = startIndex
+    for (let i = 0; i < repeatCount; i++) {
+      out += current + this.lineEnding
+      current += increment
+    }
+    return out
+  }
 }
 
 export default StringProcess

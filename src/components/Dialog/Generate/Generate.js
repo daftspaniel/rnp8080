@@ -14,7 +14,7 @@ class GenerateDialog extends Dialog {
     super(props)
     this.minibus.subscribe(EditorEvents.Show_Generate_Dialog, () => this.show())
     this.title = 'Generate'
-    this.state = { text: '', repeat: 1, generatedText: '' }
+    this.state = { text: '', repeat: 10, generatedText: '' }
   }
 
   onTextChange = (event) => {

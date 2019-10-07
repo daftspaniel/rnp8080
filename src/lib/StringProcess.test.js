@@ -134,3 +134,10 @@ it('Generate repeated string with newline', () => {
   expect(tp.generateRepeatedString('Moo', 0, true)).toEqual('')
   expect(tp.generateRepeatedString('Moo', 4, true)).toEqual('Moo\nMoo\nMoo\nMoo\n')
 })
+
+it('Generate number sequence', () => {
+  expect(tp.generateSequenceString(1, 10, 1)).toEqual('1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n')
+  expect(tp.generateSequenceString(5, 5, 1)).toEqual('5\n6\n7\n8\n9\n')
+  expect(tp.generateSequenceString(1, 10, 10)).toEqual('1\n11\n21\n31\n41\n51\n61\n71\n81\n91\n')
+  expect(tp.generateSequenceString(10, 5, -1)).toEqual('10\n9\n8\n7\n6\n')
+})
