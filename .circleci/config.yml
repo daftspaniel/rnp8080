@@ -35,7 +35,4 @@ jobs:
       # run tests!
       - run: npm test
       - run: npm run build
-      - run: wget http://localhost:3000
-      - run: more index.html
       - run: npm run start:ci && sleep 20 && npm run cy:run --
-      - run: kill $(jobs -p) || true
