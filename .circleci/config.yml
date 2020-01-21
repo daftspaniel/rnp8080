@@ -39,5 +39,6 @@ jobs:
           name: "Run App"
           background: true
           command: npm run start:ci
+      - run: sleep 30
       - run: npm run cy:run --
       - run: kill $(jobs -p) || true
