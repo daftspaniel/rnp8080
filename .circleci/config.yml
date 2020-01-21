@@ -37,7 +37,10 @@ jobs:
       - run: npm run build
       - run: 
           name: "Run App"
+          background: true
           command: npm run start:ci
       - run: sleep 30
+      - run: wget http://localhost:3000
+      - run: more index.html
       - run: npm run cy:run --
       - run: kill $(jobs -p) || true
