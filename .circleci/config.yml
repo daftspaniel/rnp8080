@@ -35,4 +35,6 @@ jobs:
       # run tests!
       - run: npm test
       - run: npm run build
+      - run: npm run start:ci &
       - run: npm run cy:run --
+      - run: kill $(jobs -p) || true
