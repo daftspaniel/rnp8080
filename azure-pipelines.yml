@@ -20,5 +20,5 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- script: npm test
+- script: CI=true npm test
   displayName: 'run unit tests'
