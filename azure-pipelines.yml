@@ -11,9 +11,9 @@ pool:
 
 steps:
  - task: NodeTool@0
-  inputs:
+   inputs:
     versionSpec: '10.x'
-  displayName: 'Install Node.js'
+    displayName: 'Install Node.js'
  
  - script: npm ci
   displayName: 'Install NPM dependencies'
