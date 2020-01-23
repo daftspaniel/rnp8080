@@ -20,9 +20,6 @@ steps:
  
  - script: npm ci
    displayName: 'Install NPM dependencies'
-
- - script: npm install
-   displayName: 'npm install'
    
  - task: Cache@2
    inputs:
@@ -33,6 +30,9 @@ steps:
     path: $(npm_config_cache)
    displayName: Cache npm
 
+ - script: npm install
+   displayName: 'npm install'
+   
  - script: npm run build
    displayName: 'npm build'
 
