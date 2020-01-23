@@ -29,3 +29,6 @@ steps:
 
  - script: npm run cy:verify
    displayName: 'Cypress verify'
+   
+ - script: npm run start:ci && sleep 5 && npm run cy:run -- 
+   displayName: 'Running Cypress tests'
