@@ -10,27 +10,21 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@0
+ - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
+ 
+ - script: npm ci
+  displayName: 'Install NPM dependencies'
 
-- task: CacheBeta@1
-  inputs:
-    key: npm | $(Agent.OS) | package-lock.json
-    path: ~/.npm
-    restoreKeys: npm | $(Agent.OS) | package-lock.json
-  displayName: Cache NPM packages
-- task: CacheBeta@1
-  inputs:
-    key: cypress | $(Agent.OS) | package-lock.json
-    path: ~/.cache/Cypress
-    restoreKeys: cypress | $(Agent.OS) | package-lock.json
-  displayName: Cache Cypress binary  
+ - script: npm run cy:verify
+  displayName: 'Cypress verify'
 
-- script: |
-    npm install
-    npm run build
+ - script: npm install
+  displayName: 'npm install and build'
+
+ - script: npm run build
   displayName: 'npm install and build'
 
 - script: CI=true npm test
