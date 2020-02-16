@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { Dialog } from '../Dialog'
-//import StringProcess from '../../../lib/StringProcess'
+import StringProcess from '../../../lib/StringProcess'
 import { EditorEvents } from '../../../Events'
 
 import '../Dialog.css'
 
-//const textProcessor = new StringProcess()
+const textProcessor = new StringProcess()
 
 class NumberSequenceDialog extends Dialog {
     constructor(props) {
@@ -31,43 +31,55 @@ class NumberSequenceDialog extends Dialog {
             >
                 {this.renderTitleBar()}
                 <br />
-                <div style={{textAlign: 'left'}}>
+                <div style={{ textAlign: 'left' }}>
                     <label className="repeatLabel">Start at </label>
-                <input
-                    className="repeat"
-                    type="text"
-                    placeholder="Type text here..."
-                    id="repeatTextbox"
-                    value={this.state.startIndex}
-                />
+                    <input
+                        className="repeat"
+                        type="text"
+                        placeholder="Type text here..."
+                        id="repeatTextbox"
+                        value={this.state.startIndex}
+                        onChange={this.onSequenceChange}
+                    />
+                    <br />
+                    <br />
+                    <label className="repeatLabel">and repeat </label>
+                    <input className="repeatCount" type="number" min="1" value={this.state.repeatCount} onChange={this.onSequenceChange} /> times
                 <br />
+                    <br />
+                    <label className="repeatLabel">adding </label>
+                    <input className="repeatCount" type="number" min="1" value={this.state.increment} onChange={this.onSequenceChange} /> each time
                 <br />
-                <label className="repeatLabel">and repeat </label>
-                <input className="repeatCount" type="number" min="1" value={this.state.repeatCount} /> times
+                    <br />
+                </div>
+
+                <textarea
+                    className="previewText"
+                    readOnly
+                    placeholder="Preview will appear here"
+                    value={this.state.generatedText}
+                ></textarea>
+
                 <br />
-                <br />
-                <label className="repeatLabel">adding </label>
-                <input className="repeatCount" type="number" min="1" value={this.state.increment} /> each time
-                <br />
-                <br />
-            </div>
-            
-            <textarea
-                className="previewText"
-                readOnly
-                placeholder="Preview will appear here"
-                value={this.state.generatedText}
-            ></textarea>
-            
-            <br />
-            <button className="actionButton" onClick={this.prepend}>Prepend</button>
-            <button className="actionButton" onClick={this.insert}>Insert</button>
-            <button className="actionButton" onClick={this.append}>Append</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button className="actionButton" onClick={this.prepend}>Prepend</button>
+                <button className="actionButton" onClick={this.insert}>Insert</button>
+                <button className="actionButton" onClick={this.append}>Append</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button onClick={this.close}>Close</button>
             </div >
         ))
     }
+
+    onSequenceChange = (event) => {
+        this.setState({ startIndex: event.target.value })
+        this.updatePreview()
+    }
+
+    updatePreview() {
+        const newPreviewText = textProcessor.generateSequenceString(this.state.startIndex, this.state.repeatCount, this.state.increment)
+        this.setState({ generatedText: newPreviewText })
+    }
+
 }
 
 export default NumberSequenceDialog

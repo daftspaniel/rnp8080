@@ -43,7 +43,7 @@ class GenerateDialog extends Dialog {
   }
 
   updatePreview(text, number) {
-    let newPreviewText = textProcessor.generateRepeatedString(text, number)
+    const newPreviewText = textProcessor.generateRepeatedString(text, number)
     this.setState({ generatedText: newPreviewText })
   }
 
