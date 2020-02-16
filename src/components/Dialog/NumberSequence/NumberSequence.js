@@ -30,7 +30,7 @@ class NumberSequenceDialog extends Dialog {
             >
                 {this.renderTitleBar()}
                 <br />
-                <div style={{ textAlign: 'left' }}>
+                <div style={{ textAlign: 'left', marginLeft: 100 }}>
                     <label className="repeatLabel">Start at </label>
                     <input
                         className="repeat"
@@ -38,16 +38,24 @@ class NumberSequenceDialog extends Dialog {
                         placeholder="Type text here..."
                         id="repeatTextbox"
                         value={this.state.startIndex}
-                        onChange={this.onSequenceChange}
+                        onChange={this.onStartIndexChange}
                     />
                     <br />
                     <br />
                     <label className="repeatLabel">and repeat </label>
-                    <input className="repeatCount" type="number" min="1" value={this.state.repeatCount} onChange={this.onSequenceChange} /> times
+                    <input className="repeatCount"
+                        type="number" min="1"
+                        value={this.state.repeatCount}
+                        onChange={this.onRepeatCountChange}
+                    /> times
                 <br />
                     <br />
                     <label className="repeatLabel">adding </label>
-                    <input className="repeatCount" type="number" min="1" value={this.state.increment} onChange={this.onSequenceChange} /> each time
+                    <input className="repeatCount"
+                        type="number" min="1"
+                        value={this.state.increment}
+                        onChange={this.onIncrementChange}
+                    /> each time
                 <br />
                     <br />
                 </div>
@@ -69,7 +77,11 @@ class NumberSequenceDialog extends Dialog {
         ))
     }
 
-    onSequenceChange = (event) => this.setState({ startIndex: event.target.value })
+    onStartIndexChange = (event) => this.setState({ startIndex: event.target.value })
+
+    onRepeatCountChange = (event) => this.setState({ repeatCount: event.target.value })
+
+    onIncrementChange = (event) => this.setState({ increment: event.target.value })
 
     getPreview = () => textProcessor.generateSequenceString(this.state.startIndex, this.state.repeatCount, this.state.increment)
 }
