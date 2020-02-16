@@ -14,7 +14,6 @@ class NumberSequenceDialog extends Dialog {
         this.minibus.subscribe(EditorEvents.Show_Number_Sequence_Dialog, () => this.show())
         this.title = 'Number Sequence'
         this.state = {
-            generatedText: '',
             startIndex: 10,
             repeatCount: 10,
             increment: 10
@@ -57,7 +56,7 @@ class NumberSequenceDialog extends Dialog {
                     className="previewText"
                     readOnly
                     placeholder="Preview will appear here"
-                    value={this.state.generatedText}
+                    value={this.getPreview()}
                 ></textarea>
 
                 <br />
@@ -70,16 +69,9 @@ class NumberSequenceDialog extends Dialog {
         ))
     }
 
-    onSequenceChange = (event) => {
-        this.setState({ startIndex: event.target.value })
-        this.updatePreview()
-    }
+    onSequenceChange = (event) => this.setState({ startIndex: event.target.value })
 
-    updatePreview() {
-        const newPreviewText = textProcessor.generateSequenceString(this.state.startIndex, this.state.repeatCount, this.state.increment)
-        this.setState({ generatedText: newPreviewText })
-    }
-
+    getPreview = () => textProcessor.generateSequenceString(this.state.startIndex, this.state.repeatCount, this.state.increment)
 }
 
 export default NumberSequenceDialog

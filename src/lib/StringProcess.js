@@ -214,10 +214,10 @@ class StringProcess {
    ///Returns string of a sequence of numbers each on a new line.
   generateSequenceString(startIndex, repeatCount, increment) {
     let out = ''
-    let current = startIndex
+    let current = Number(startIndex)
     for (let i = 0; i < repeatCount; i++) {
       out += current + this.lineEnding
-      current += increment
+      current += Number(increment)
     }
     return out
   }
