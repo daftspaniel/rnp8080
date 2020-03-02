@@ -4,13 +4,13 @@
   "private": true,
   "dependencies": {
     "eslint-config-react-app": "^5.2.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "react-draggable": "^4.2.0",
     "react-scripts": "^3.4.0"
   },
   "devDependencies": {
-    "cypress": "^4.0.2"
+    "cypress": "^4.1.0"
   },
   "homepage": ".",
   "scripts": {
