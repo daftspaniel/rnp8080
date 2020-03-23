@@ -3,14 +3,14 @@
   "version": "0.0.6",
   "private": true,
   "dependencies": {
-    "eslint-config-react-app": "^5.2.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "eslint-config-react-app": "^5.2.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-draggable": "^4.2.0",
-    "react-scripts": "^3.4.0"
+    "react-scripts": "^3.4.1"
   },
   "devDependencies": {
-    "cypress": "^4.1.0"
+    "cypress": "^4.2.0"
   },
   "homepage": ".",
   "scripts": {
