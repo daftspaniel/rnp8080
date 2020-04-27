@@ -5,6 +5,7 @@ import StringProcess from '../../../lib/StringProcess'
 import { EditorEvents } from '../../../Events'
 
 import '../Dialog.css'
+import '../Common/Buttons.css'
 import './Generate.css'
 
 const textProcessor = new StringProcess()
@@ -79,11 +80,11 @@ class GenerateDialog extends Dialog {
           value={this.state.generatedText}
         ></textarea>
         <br />
-        <button className="actionButton" onClick={this.prepend}>Prepend</button>
-        <button className="actionButton" onClick={this.insert}>Insert</button>
-        <button className="actionButton" onClick={this.append}>Append</button>
+        <button className="ActionButton" onClick={this.prepend}>Prepend</button>
+        <button className="ActionButton" onClick={this.insert}>Insert</button>
+        <button className="ActionButton" onClick={this.append}>Append</button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button onClick={this.close}>Close</button>
+        <button className="ActionButton" onClick={this.close}>Close</button>
       </div>
     ))
   }

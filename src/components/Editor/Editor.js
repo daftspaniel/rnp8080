@@ -64,6 +64,7 @@ class Editor extends BaseComponent {
     return (
       <div className="EditorContainer">
         <textarea
+          id="nptextarea"
           className="Editor"
           onKeyUp={this.handleKeyPress}
           onChange={this.handleChange}
