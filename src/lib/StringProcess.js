@@ -79,7 +79,7 @@ class StringProcess {
 
     const segments = this.getSegments(text)
     let out = ''
-    let numberingIndex = 1;
+    let numberingIndex = 1
     for (let i = 0; i < segments.length; i++) {
       if (segments[i].length > 0) {
         out += `${numberingIndex}. ` + segments[i] + '\n'

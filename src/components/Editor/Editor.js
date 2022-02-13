@@ -122,7 +122,7 @@ class Editor extends BaseComponent {
 
     const newText = activeNote.text.substring(0, cursorPostion) +
       textToInsert +
-      activeNote.text.substring(cursorPostion);
+      activeNote.text.substring(cursorPostion)
 
     this.update(newText, cursorPostion)
   }
@@ -175,7 +175,7 @@ class Editor extends BaseComponent {
     this.update(newText)
   }
 
-  duplicateAllHandler = () => this.update(documents.activeNote.text + `\n` + documents.activeNote.text)
+  duplicateAllHandler = () => this.update(documents.activeNote.text + '\n' + documents.activeNote.text)
 
   duplicateLinesHandler = () => this.update(textProcessor.duplicateLines(documents.activeNote.text))
 

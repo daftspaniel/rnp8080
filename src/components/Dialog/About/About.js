@@ -6,7 +6,7 @@ import { welcomeText } from '../../Resources/Resources'
 import '../Dialog.css'
 import './About.css'
 
-import { Dialog } from '../Dialog';
+import { Dialog } from '../Dialog'
 
 class AboutDialog extends Dialog {
     constructor(props) {
